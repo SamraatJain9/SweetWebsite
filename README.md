@@ -1,7 +1,6 @@
 # sweets
 
-A new Flutter project.
-Hello
+What's Next Production Project 
 
 ## Getting Started
 
