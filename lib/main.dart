@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 1), () {});
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Home Page')),
+      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Home_Page_Title')),
     );
   }
 
@@ -103,6 +103,23 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     }
   }
 
+  Widget buildCard(String imageUrl, String title) {
+    return SizedBox(
+      width: 450,
+      child: Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Image.network(imageUrl, fit: BoxFit.cover, height: 400, width: 600),
+            ListTile(
+              title: Text(title),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -112,39 +129,58 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(widget.title, textAlign: TextAlign.center),
           centerTitle: true,
+          leading: PopupMenuButton<String>(
+            onSelected: _onMenuSelected,
+            itemBuilder: (BuildContext context) {
+              return {'Upcoming Festivals', 'New Beginnings(Story)', 'Social Media'}.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+            icon: Icon(Icons.menu),
+          ),
           bottom: TabBar(
             controller: _tabController,
             tabs: const [
-              Tab(text: 'Offers'),
               Tab(text: 'Sweets'),
               Tab(text: 'Saltines'),
+              Tab(text: 'Offers'),
             ],
           ),
         ),
-        body: Stack(
+        body: TabBarView(
+          controller: _tabController,
           children: [
-            TabBarView(
-              controller: _tabController,
-              children: [
-                Center(child: Text('Tab 1 Content')),
-                Center(child: Text('Tab 2 Content')),
-                Center(child: Text('Tab 3 Content')),
-              ],
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1'),
+                  buildCard('https://images.unsplash.com/photo-1558234469-50fc184d1cc9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2'),
+                  buildCard('https://images.unsplash.com/photo-1591123220262-87ed377f7c08?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3'),
+                ],
+              ),
             ),
-            Positioned(
-              top: 10,
-              left: 10,
-              child: PopupMenuButton<String>(
-                onSelected: _onMenuSelected,
-                itemBuilder: (BuildContext context) {
-                  return {'Upcoming Festivals', 'New Beginnings(Story)', 'Social Media'}.map((String choice) {
-                    return PopupMenuItem<String>(
-                      value: choice,
-                      child: Text(choice),
-                    );
-                  }).toList();
-                },
-                child: Icon(Icons.menu),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  buildCard('https://images.unsplash.com/photo-1517093602195-b40af9688b46?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Saltine 1'),
+                  buildCard('https://images.unsplash.com/photo-1599490659213-e2b9527bd087?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Saltine 2'),
+                  buildCard('https://images.unsplash.com/photo-1612773843298-44dcdd45d865?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Saltine 3'),
+                ],
+              ),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  buildCard('https://cdn.pixabay.com/photo/2017/06/20/08/49/chocolate-2422300_1280.jpg', 'Offer 1'),
+                  buildCard('https://cdn.pixabay.com/photo/2023/10/20/11/19/ai-generated-8329269_1280.jpg', 'Offer 2'),
+                  buildCard('https://cdn.pixabay.com/photo/2017/06/20/08/50/christmas-hamper-2422314_1280.jpg', 'Offer 3'),
+                ],
               ),
             ),
           ],
@@ -153,7 +189,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.contact_mail),
-              label: 'Contact Us: contact@gmail.com',
+              label: 'Contact Us',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.location_on),
@@ -167,7 +203,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           onTap: (int index) {
             switch (index) {
               case 0:
-                _launchURL('mailto:contact@shop.com');
+                _launchURL('mailto:contact@gmail.com');
                 break;
               case 1:
                 _launchURL('https://www.google.com/maps/place/Shop+Address');
