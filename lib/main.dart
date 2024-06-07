@@ -77,8 +77,8 @@ class HomeScreen extends StatelessWidget {
             buildNavigationCard(context, 'Sweets/Bakery', MyHomePage(title: 'Sweets/Bakery'), isFullWidth: true),
             Row(
               children: [
-                Expanded(child: buildNavigationCard(context, 'Offers', Page2())),
                 Expanded(child: buildNavigationCard(context, 'Upcoming Festivals & Gifts', Page3())),
+                Expanded(child: buildNavigationCard(context, 'Offers', Page2())),
               ],
             ),
             buildNavigationCard(context, 'Fast Foods | Live Kitchen', Page4(), isFullWidth: true),
