@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'home.dart'; // Import the home.dart file
 
 void main() {
   runApp(const MyApp());
@@ -139,8 +140,19 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 );
               }).toList();
             },
-            icon: Icon(Icons.menu),
+            icon: const Icon(Icons.menu),
           ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.home),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+              },
+            ),
+          ],
           bottom: TabBar(
             controller: _tabController,
             tabs: const [

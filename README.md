@@ -5,6 +5,8 @@ What's Next Production Project
 ## Getting Started
 
 This project is a starting point for a Flutter application.
+1. main.dart: display page
+2. home.dart: opening page
 
 A few resources to get you started if this is your first Flutter project:
 
