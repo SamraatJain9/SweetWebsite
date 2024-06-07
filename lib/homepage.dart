@@ -49,13 +49,19 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           children: <Widget>[
             Image.network(imageUrl, fit: BoxFit.cover, height: 400, width: 600),
             ListTile(
-              title: Text(title),
+              title: Center(
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center, // Align the text to the center
+                ),
+              ),
             ),
           ],
         ),
       ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
