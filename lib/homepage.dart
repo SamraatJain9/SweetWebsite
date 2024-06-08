@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:async';
 import 'main.dart'; // Import main.dart to access HomeScreen
 
 class MyHomePage extends StatefulWidget {
@@ -13,15 +14,43 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  final ScrollController _scrollController = ScrollController();
+  int _selectedSweet = 1;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    _autoScroll();
+  }
+
+  void _autoScroll() {
+    Timer.periodic(Duration(seconds: 2), (timer) {
+      if (_scrollController.hasClients) {
+        final maxScrollExtent = _scrollController.position.maxScrollExtent;
+        final currentScrollPosition = _scrollController.position.pixels;
+        final screenHeight = MediaQuery.of(context).size.height;
+
+        if (currentScrollPosition < maxScrollExtent) {
+          _scrollController.animateTo(
+            currentScrollPosition + screenHeight,
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOut,
+          );
+        } else {
+          _scrollController.animateTo(
+            0.0,
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOut,
+          );
+        }
+      }
+    });
   }
 
   @override
   void dispose() {
+    _scrollController.dispose();
     _tabController.dispose();
     super.dispose();
   }
@@ -40,28 +69,90 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     }
   }
 
-  Widget buildCard(String imageUrl, String title) {
-    return SizedBox(
-      width: 450,
-      child: Card(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Image.network(imageUrl, fit: BoxFit.cover, height: 400, width: 600),
-            ListTile(
-              title: Center(
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center, // Align the text to the center
+  void _showOrderMethodDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Choose Delivery Service"),
+
+          contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0), // Adjust padding as needed
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    // Launch Uber Eats link
+                    _launchURL('https://www.ubereats.com');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Uber Eats clicked')),
+                    );
+                    Navigator.of(context).pop(); // Close the dialog
+                  },
+                  child: Text("Uber Eats"),
                 ),
-              ),
+                TextButton(
+                  onPressed: () {
+                    // Launch Deliveroo link
+                    _launchURL('https://www.deliveroo.com');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Deliveroo clicked')),
+                    );
+                    Navigator.of(context).pop(); // Close the dialog
+                  },
+                  child: Text("Deliveroo"),
+                ),
+              ],
             ),
           ],
+        );
+      },
+    );
+  }
+
+
+
+  Widget buildCard(String imageUrl, String title) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final cardHeight = screenHeight * 0.8; // 80% of the screen height
+    final cardWidth = MediaQuery.of(context).size.width * 0.8; // 80% of the screen width
+
+    return Align(
+      alignment: Alignment.centerRight,
+      child: SizedBox(
+        width: cardWidth,
+        height: cardHeight,
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          elevation: 5,
+          child: Column(
+            children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  height: cardHeight - 60, // 60 to account for the ListTile height
+                  width: cardWidth,
+                ),
+              ),
+              ListTile(
+                title: Center(
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -107,38 +198,84 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         body: TabBarView(
           controller: _tabController,
           children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1'),
-                  buildCard('https://images.unsplash.com/photo-1558234469-50fc184d1cc9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2'),
-                  buildCard('https://images.unsplash.com/photo-1591123220262-87ed377f7c08?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3'),
-                ],
+            Row(
+              children: [
+                // Side panel
+                Container(
+                  width: 200, // Adjust the width as needed
+                  color: Colors.deepPurple[200], // Example background color
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              _selectedSweet = 1;
+                            });
+                          },
+                          child: Text("Category - 1"),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              _selectedSweet = 2;
+                            });
+                          },
+                          child: Text("Category - 2"),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              _selectedSweet = 3;
+                            });
+                          },
+                          child: Text("Category - 3"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // List of sweets cards
+                Expanded(
+                  child: ListView(
+                    controller: _scrollController,
+                    children: [
+                      if (_selectedSweet == 1)
+                        buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1'),
+                      if (_selectedSweet == 2)
+                        buildCard('https://images.unsplash.com/photo-1558234469-50fc184d1cc9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2'),
+                      if (_selectedSweet == 3)
+                        buildCard('https://images.unsplash.com/photo-1591123220262-87ed377f7c08?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+
+            // Center widget for other tabs
+            Center(
+              child: Text(
+                'Coming Soon...',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  buildCard('https://images.unsplash.com/photo-1517093602195-b40af9688b46?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Saltine 1'),
-                  buildCard('https://images.unsplash.com/photo-1599490659213-e2b9527bd087?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Saltine 2'),
-                  buildCard('https://images.unsplash.com/photo-1612773843298-44dcdd45d865?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Saltine 3'),
-                ],
-              ),
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  buildCard('https://cdn.pixabay.com/photo/2017/06/20/08/49/chocolate-2422300_1280.jpg', 'Offer 1'),
-                  buildCard('https://cdn.pixabay.com/photo/2023/10/20/11/19/ai-generated-8329269_1280.jpg', 'Offer 2'),
-                  buildCard('https://cdn.pixabay.com/photo/2017/06/20/08/50/christmas-hamper-2422314_1280.jpg', 'Offer 3'),
-                ],
+            Center(
+              child: Text(
+                'Coming Soon...',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
             ),
           ],
         ),
+
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -160,7 +297,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 _launchURL('mailto:contact@gmail.com');
                 break;
               case 1:
-                _launchURL('https://www.google.com/maps/place/Shop+Address');
+                _showOrderMethodDialog(context);
                 break;
               case 2:
                 _launchURL('https://www.google.com/maps/search/?api=1&query=Shop+Location');
@@ -171,4 +308,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: MyHomePage(title: 'Shop Offers'),
+  ));
 }
