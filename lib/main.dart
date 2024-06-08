@@ -74,36 +74,50 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            buildNavigationCard(context, 'Sweets/Bakery', MyHomePage(title: 'Sweets/Bakery'), isFullWidth: true),
+            buildNavigationCard(context, 'Sweets/Bakery', MyHomePage(title: 'Sweets/Bakery'), 'Click here', isFullWidth: true),
+            buildNavigationCard(context, 'Fast Foods | Live Kitchen Restaurant', Page4(), 'Click here', isFullWidth: true),
             Row(
               children: [
-                Expanded(child: buildNavigationCard(context, 'Upcoming Festivals & Gifts', Page3())),
-                Expanded(child: buildNavigationCard(context, 'Offers', Page2())),
+                Expanded(child: buildNavigationCard(context, 'Upcoming Festivals & Gifting', Page3(), 'Click here')),
+                Expanded(child: buildNavigationCard(context, 'Offers', Page2(), 'Click here')),
               ],
             ),
-            buildNavigationCard(context, 'Fast Foods | Live Kitchen', Page4(), isFullWidth: true),
           ],
         ),
       ),
     );
   }
 
-  Widget buildNavigationCard(BuildContext context, String label, Widget page, {bool isFullWidth = false}) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => page),
-        );
-      },
-      child: Card(
-        child: Container(
-          width: isFullWidth ? double.infinity : null,
-          height: 150, // Adjust the height as needed
-          child: Center(
-            child: Text(
-              label,
-              style: const TextStyle(fontSize: 24),
+  Widget buildNavigationCard(BuildContext context, String label, Widget page, String subLabel, {bool isFullWidth = false}) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        },
+        child: Card(
+          child: Container(
+            width: isFullWidth ? double.infinity : null,
+            height: 150, // Adjust the height as needed
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  label,
+                  style: const TextStyle(fontSize: 24),
+                ),
+                const SizedBox(height: 8), // Add some spacing between the texts
+                Text(
+                  subLabel,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
             ),
           ),
         ),
