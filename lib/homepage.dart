@@ -75,7 +75,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Choose Delivery Service"),
-
           contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0), // Adjust padding as needed
           actions: <Widget>[
             Row(
@@ -112,47 +111,47 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   }
 
 
-
   Widget buildCard(String imageUrl, String title) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final cardHeight = screenHeight * 0.8; // 80% of the screen height
-    final cardWidth = MediaQuery.of(context).size.width * 0.8; // 80% of the screen width
+    final cardHeight = screenHeight * 0.6; // Adjust the ratio as needed
 
     return Align(
       alignment: Alignment.centerRight,
       child: SizedBox(
-        width: cardWidth,
         height: cardHeight,
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          elevation: 5,
-          child: Column(
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                  height: cardHeight - 60, // 60 to account for the ListTile height
-                  width: cardWidth,
-                ),
-              ),
-              ListTile(
-                title: Center(
-                  child: Text(
-                    title,
-                    textAlign: TextAlign.center,
+        child: SingleChildScrollView( // Wrap the Card with SingleChildScrollView
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            elevation: 5,
+            child: Column(
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                    height: cardHeight - 60, // Adjust the height of the image
+                    width: double.infinity,
                   ),
                 ),
-              ),
-            ],
+                ListTile(
+                  title: Center(
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               children: [
                 // Side panel
                 Container(
-                  width: 200, // Adjust the width as needed
+                  width: 150, // Adjust the width as needed
                   color: Colors.deepPurple[200], // Example background color
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
