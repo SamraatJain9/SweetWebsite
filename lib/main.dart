@@ -77,15 +77,15 @@ class HomeScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                Expanded(child: buildNavigationCard(context, 'Deliveroo', 'https://deliveroo.co.uk', 'Click here', isUrl: true)),
-                Expanded(child: buildNavigationCard(context, 'Uber Eats', 'https://ubereats.com', 'Click here', isUrl: true)),
+                Expanded(child: buildNavigationCard(context, 'Deliveroo', 'https://deliveroo.co.uk', 'Order here', isUrl: true)),
+                Expanded(child: buildNavigationCard(context, 'Uber Eats', 'https://ubereats.com', 'Order here', isUrl: true)),
               ],
             ),
             buildNavigationCard(context, 'Sweets/Bakery', MyHomePage(title: 'Sweets/Bakery'), 'Click here', isFullWidth: true),
-            buildNavigationCard(context, 'Fast Foods | Live Kitchen Restaurant', Page4(), 'Click here', isFullWidth: true),
+            buildNavigationCard(context, 'Restaurant', Page4(), 'Click here', isFullWidth: true),
             Row(
               children: [
-                Expanded(child: buildNavigationCard(context, 'Upcoming Festivals & Gifting', Page3(), 'Click here')),
+                Expanded(child: buildNavigationCard(context, 'Festivals & Gifting', Page3(), 'Click here')),
                 Expanded(child: buildNavigationCard(context, 'Offers', Page2(), 'Click here')),
               ],
             ),
