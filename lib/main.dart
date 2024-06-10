@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'homepage.dart';
 import 'pages/page2.dart';
 import 'pages/page3.dart';
@@ -74,6 +75,12 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
+            Row(
+              children: [
+                Expanded(child: buildNavigationCard(context, 'Deliveroo', 'https://deliveroo.co.uk', 'Click here', isUrl: true)),
+                Expanded(child: buildNavigationCard(context, 'Uber Eats', 'https://ubereats.com', 'Click here', isUrl: true)),
+              ],
+            ),
             buildNavigationCard(context, 'Sweets/Bakery', MyHomePage(title: 'Sweets/Bakery'), 'Click here', isFullWidth: true),
             buildNavigationCard(context, 'Fast Foods | Live Kitchen Restaurant', Page4(), 'Click here', isFullWidth: true),
             Row(
@@ -88,15 +95,23 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget buildNavigationCard(BuildContext context, String label, Widget page, String subLabel, {bool isFullWidth = false}) {
+  Widget buildNavigationCard(BuildContext context, String label, dynamic destination, String subLabel, {bool isUrl = false, bool isFullWidth = false}) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => page),
-          );
+        onTap: () async {
+          if (isUrl && destination is String) {
+            if (await canLaunch(destination)) {
+              await launch(destination);
+            } else {
+              throw 'Could not launch $destination';
+            }
+          } else if (destination is Widget) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => destination),
+            );
+          }
         },
         child: Card(
           child: Container(
@@ -124,4 +139,5 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
 }
