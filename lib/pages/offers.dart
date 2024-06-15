@@ -104,32 +104,44 @@ class _Page2State extends State<Page2> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Offers'),
+        centerTitle: true, // Center the appbar title
       ),
-      body: ListView.builder(
-        controller: _scrollController,
-        itemCount: offers.length,
-        itemBuilder: (context, index) {
-          return Container(
-            height: screenHeight,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 5,
-                  child: Container(
-                    width: cardWidth,
-                    child: ListTile(
-                      title: Center(child: Text(offers[index])),
+      body: Column(
+        children: [
+          SizedBox(height: 10), // Add some space between the app bar and the text
+          Text(
+            'Eat Pure, Gift Pure',
+            style: TextStyle(fontSize: 18),
+          ),
+          Expanded(
+            child: ListView.builder(
+              controller: _scrollController,
+              itemCount: offers.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: screenHeight,
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        elevation: 5,
+                        child: Container(
+                          width: cardWidth,
+                          child: ListTile(
+                            title: Center(child: Text(offers[index])),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
