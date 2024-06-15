@@ -55,10 +55,11 @@ class Page4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Page 4'),
+        title: Text('Fast Food'),
+        centerTitle: true,
       ),
       body: Center(
-        child: Text('This is Page 4'),
+        child: Text('Fast Food and Live Kitchen'),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
