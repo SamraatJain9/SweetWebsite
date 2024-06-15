@@ -141,20 +141,6 @@ class _Page3State extends State<Page3> {
               },
             ),
           ),
-          Divider(),
-          Text('Past Festivals', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _pastFestivals.length,
-              itemBuilder: (context, index) {
-                var festival = _pastFestivals[index];
-                return ListTile(
-                  title: Text(festival['name']),
-                  subtitle: Text(festival['date']),
-                );
-              },
-            ),
-          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

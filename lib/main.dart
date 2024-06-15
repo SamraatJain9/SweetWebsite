@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'homepage.dart';
-import 'pages/page2.dart';
-import 'pages/page3.dart';
-import 'pages/page4.dart';
+import 'pages/offers.dart';
+import 'pages/festivals.dart';
+import 'pages/food.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +19,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontSize: 32, // Adjust the font size as needed
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false, // Remove the debug banner
@@ -75,6 +81,13 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
+            Text(
+              'Eat Pure, Gift Pure',
+              style: TextStyle(
+                fontSize: 20, // Adjust the font size as needed
+              ),
+            ),
+            const SizedBox(height: 16), // Add some spacing below the welcome text
             Row(
               children: [
                 Expanded(child: buildNavigationCard(context, 'Deliveroo', 'https://deliveroo.co.uk', 'Order here', isUrl: true)),
@@ -116,7 +129,7 @@ class HomeScreen extends StatelessWidget {
         child: Card(
           child: Container(
             width: isFullWidth ? double.infinity : null,
-            height: 150, // Adjust the height as needed
+            height: 100, // Adjust the height as needed
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -139,5 +152,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
 }
