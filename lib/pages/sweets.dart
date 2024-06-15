@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
-import 'main.dart'; // Import main.dart to access HomeScreen
+import '../main.dart'; // Import main.dart to access HomeScreen
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

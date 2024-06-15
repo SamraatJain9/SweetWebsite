@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'homepage.dart';
+import 'pages/sweets.dart';
 import 'pages/offers.dart';
 import 'pages/festivals.dart';
 import 'pages/food.dart';
