@@ -124,11 +124,12 @@ class _Page3State extends State<Page3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Festival Timeline'),
+        title: Text('Upcoming Festival Timeline'),
+        centerTitle: true,
       ),
       body: Column(
         children: [
-          Text('Upcoming Festivals', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text('Eat Pure, Gift Pure', style: TextStyle(fontSize: 18)),
           Expanded(
             child: ListView.builder(
               itemCount: _upcomingFestivals.length,
