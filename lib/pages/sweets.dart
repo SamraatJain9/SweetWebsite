@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sweets/pages/festivals.dart';
+import 'package:sweets/pages/about.dart';
+import 'package:sweets/pages/social_media.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
 import '../main.dart'; // Import main.dart to access HomeScreen
@@ -163,18 +166,20 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           title: Text(widget.title, textAlign: TextAlign.center),
           centerTitle: true,
           leading: PopupMenuButton<String>(
-            onSelected: _onMenuSelected,
             itemBuilder: (BuildContext context) {
-              return {'Upcoming Festivals', 'New Beginnings(Story)', 'Social Media'}.map((String choice) {
+              return ['Upcoming Festivals', 'New Beginnings(Story)', 'Social Media'].map((String choice) {
                 return PopupMenuItem<String>(
-                  value: choice,
+                  value: choice.toLowerCase().replaceAll(' ', ''), // Example: 'upcomingFestivals'
                   child: Text(choice),
                 );
               }).toList();
             },
-            icon: const Icon(Icons.menu),
+            onSelected: (String routeName) {
+              Navigator.pushNamed(context, '/$routeName');
+            },
           ),
-          actions: [
+
+            actions: [
             IconButton(
               icon: const Icon(Icons.home),
               onPressed: () {
@@ -214,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               _selectedSweet = 1;
                             });
                           },
-                          child: Text("Category - 1"),
+                          child: Text("Type1"),
                         ),
                       ),
                       Padding(
@@ -225,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               _selectedSweet = 2;
                             });
                           },
-                          child: Text("Category - 2"),
+                          child: Text("Type2"),
                         ),
                       ),
                       Padding(
@@ -236,7 +241,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               _selectedSweet = 3;
                             });
                           },
-                          child: Text("Category - 3"),
+                          child: Text("Type3"),
                         ),
                       ),
                     ],
@@ -311,6 +316,11 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 
 void main() {
   runApp(MaterialApp(
+    routes: {
+      '/upcomingFestivals': (context) => Page3(),
+      '/newBeginnings': (context) => Page5(),
+      '/socialMedia': (context) => Page6(),
+    },
     home: MyHomePage(title: 'Shop Offers'),
   ));
 }
