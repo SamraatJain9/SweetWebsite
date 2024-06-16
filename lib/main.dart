@@ -57,10 +57,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          'Welcome...',
-          style: Theme.of(context).textTheme.headlineMedium,
+      body: Container(
+        color: Color(0xFFDADEE7), // Background color set to #dadee7
+        child: Center(
+          child: Image.asset(
+            'assets/loading.jpeg',
+            fit: BoxFit.contain,
+          ),
         ),
       ),
     );
@@ -94,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                 Expanded(child: buildNavigationCard(context, 'Uber Eats', 'https://ubereats.com', 'Order here', isUrl: true)),
               ],
             ),
-            buildNavigationCard(context, 'Sweets/Bakery', MyHomePage(title: 'Sweets/Bakery'), 'Click here', isFullWidth: true),
+            buildNavigationCard(context, 'Sweets/Bakery', MyHomePage(title: 'Eat Pure, Gift Pure'), 'Click here', isFullWidth: true),
             buildNavigationCard(context, 'Restaurant', Page4(), 'Click here', isFullWidth: true),
             Row(
               children: [
