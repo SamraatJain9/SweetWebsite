@@ -58,8 +58,25 @@ class Page4 extends StatelessWidget {
         title: Text('Fast Food'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text('Fast Food and Live Kitchen'),
+      body: Stack(
+        children: <Widget>[
+          Positioned.fill(
+            child: Image.asset(
+              'assets/lk.gif',
+              fit: BoxFit.cover, // Make the GIF cover the entire background
+            ),
+          ),
+          Center(
+            child: Text(
+              'Fast Food & Live Kitchen',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
