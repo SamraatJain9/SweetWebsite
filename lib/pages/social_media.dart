@@ -111,7 +111,7 @@ class Page6 extends StatelessWidget {
         onTap: (int index) {
           switch (index) {
             case 0:
-              _launchURL('mailto:contact@gmail.com');
+              _showContactUsDialog(context);
               break;
             case 1:
               _showOrderMethodDialog(context);
