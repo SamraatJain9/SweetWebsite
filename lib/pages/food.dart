@@ -16,7 +16,8 @@ class Page4 extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Choose Delivery Service"),
-          contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0), // Adjust padding as needed
+          contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0),
+          // Adjust padding as needed
           actions: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,30 +84,45 @@ class Page4 extends StatelessWidget {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Fast Food'),
         centerTitle: true,
-      ),
-      body: Stack(
-        children: <Widget>[
-          Positioned.fill(
-            child: Image.asset(
-              'assets/lk.gif',
-              fit: BoxFit.cover, // Make the GIF cover the entire background
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(30.0), // Adjust height as needed
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Text(
+              'Eat Pure, Gift Pure',
+              style: TextStyle(
+                fontSize: 16,
+              ),
             ),
           ),
+        ),
+      ),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            'assets/lk.gif',
+            fit: BoxFit.cover,
+          ),
           Center(
-            child: Text(
-              'Fast Food & Live Kitchen',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Fast Food & Live Kitchen',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -135,7 +151,8 @@ class Page4 extends StatelessWidget {
               _showOrderMethodDialog(context);
               break;
             case 2:
-              _launchURL('https://www.google.com/maps/search/?api=1&query=Shop+Location');
+              _launchURL(
+                  'https://www.google.com/maps/search/?api=1&query=Shop+Location');
               break;
           }
         },

@@ -158,9 +158,18 @@ class _Page3State extends State<Page3> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
           children: [
+            Text(
+              'Eat Pure, Gift Pure',
+              style: TextStyle(
+                fontSize: 20,
+                // Adjust the font size as needed
+              ),
+            ),
+            const SizedBox(height: 16),
             // Today's Festivals
             Card(
               margin: EdgeInsets.all(8.0),
@@ -237,6 +246,7 @@ class _Page3State extends State<Page3> {
               ),
             ),
           ],
+        ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
