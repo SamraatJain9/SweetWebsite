@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToHome() async {
-    await Future.delayed(const Duration(seconds: 3), () {});
+    await Future.delayed(const Duration(seconds: 2), () {});
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const HomeScreen()),
@@ -57,27 +57,30 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Color(0xFFDADEE7), // Background color set to #dadee7
-        child: Center(
-          child: Image.asset(
-            'assets/loading.jpeg',
-            fit: BoxFit.contain,
+      body: Stack(
+        children: [
+          // Background image
+          Positioned.fill(
+            child: Image.asset(
+              'assets/logopen.jpeg', // Replace with your background image path
+              fit: BoxFit.scaleDown,
+            ),
           ),
-        ),
+          // Centered text
+        ],
       ),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
+  class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Swarnikaa'),
         centerTitle: true,
       ),
       body: Padding(
