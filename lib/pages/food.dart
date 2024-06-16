@@ -84,6 +84,67 @@ class Page4 extends StatelessWidget {
     );
   }
 
+  void _showMenuDialog(BuildContext context) {
+    // Example vegetarian fast food items
+    List<String> vegetarianItems = [
+      'Veggie Burger',
+      'Vegetarian Pizza',
+      'Vegetable Stir-fry',
+      'Caprese Salad',
+      'Falafel Wrap',
+      'Grilled Veggie Panini',
+      'Vegetarian Sushi Rolls',
+      'Quinoa Salad',
+      'Vegetarian Tacos',
+      'Spinach and Cheese Quesadilla',
+      'Vegetarian Spring Rolls',
+      'Eggplant Parmesan',
+      'Vegetarian Chili',
+      'Vegetarian Lasagna',
+      'Stuffed Bell Peppers'
+    ];
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Center(child: Text("Pure Vegetarian Menu")),
+          content: Container(
+            width: MediaQuery.of(context).size.width * 0.3, // 80% of screen width
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  for (String item in vegetarianItems)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Center(
+                        child: Text(
+                          item,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,6 +182,13 @@ class Page4 extends StatelessWidget {
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    _showMenuDialog(context);
+                  },
+                  child: Text('View Menu'),
                 ),
               ],
             ),
