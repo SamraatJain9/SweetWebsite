@@ -52,30 +52,28 @@ class _Page3State extends State<Page3> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Choose Delivery Service"),
-          contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0), // Adjust padding as needed
+          contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0),
           actions: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 TextButton(
                   onPressed: () {
-                    // Launch Uber Eats link
                     _launchURL('https://www.ubereats.com');
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Uber Eats clicked')),
                     );
-                    Navigator.of(context).pop(); // Close the dialog
+                    Navigator.of(context).pop();
                   },
                   child: Text("Uber Eats"),
                 ),
                 TextButton(
                   onPressed: () {
-                    // Launch Deliveroo link
                     _launchURL('https://www.deliveroo.com');
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Deliveroo clicked')),
                     );
-                    Navigator.of(context).pop(); // Close the dialog
+                    Navigator.of(context).pop();
                   },
                   child: Text("Deliveroo"),
                 ),
@@ -88,7 +86,6 @@ class _Page3State extends State<Page3> {
   }
 
   void _showContactUsDialog(BuildContext context) {
-    // Generate random phone number and email
     String phoneNumber = '+91 1234567890'; // Replace with actual random generator
     String emailAddress = 'contact@gmail.com'; // Replace with actual random generator
 
@@ -127,7 +124,8 @@ class _Page3State extends State<Page3> {
 
   Future<void> _loadFestivalData() async {
     try {
-      final String response = await rootBundle.loadString('assets/festivals.json');
+      final String response =
+      await rootBundle.loadString('assets/festivals.json');
       final List<dynamic> data = json.decode(response);
 
       DateTime now = DateTime.now();
@@ -156,25 +154,90 @@ class _Page3State extends State<Page3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Upcoming Festival Timeline'),
+        title: Text('Festival Timeline'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Text('Eat Pure, Gift Pure', style: TextStyle(fontSize: 18)),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _upcomingFestivals.length,
-              itemBuilder: (context, index) {
-                var festival = _upcomingFestivals[index];
-                return ListTile(
-                  title: Text(festival['name']),
-                  subtitle: Text(festival['date']),
-                );
-              },
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Today's Festivals
+            Card(
+              margin: EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Today\'s Festivals',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  if (_getTodayFestivals().isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('No festivals today'),
+                    )
+                  else
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: _getTodayFestivals().length,
+                      itemBuilder: (context, index) {
+                        var festival = _getTodayFestivals()[index];
+                        return ListTile(
+                          title: Text(festival['name']),
+                          subtitle: Text(festival['date']),
+                        );
+                      },
+                    ),
+                ],
+              ),
             ),
-          ),
-        ],
+
+            // Upcoming Festivals
+            Card(
+              margin: EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Upcoming Festivals',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  if (_upcomingFestivals.isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('No upcoming festivals'),
+                    )
+                  else
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: _upcomingFestivals.length,
+                      itemBuilder: (context, index) {
+                        var festival = _upcomingFestivals[index];
+                        return ListTile(
+                          title: Text(festival['name']),
+                          subtitle: Text(festival['date']),
+                        );
+                      },
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -200,11 +263,39 @@ class _Page3State extends State<Page3> {
               _showOrderMethodDialog(context);
               break;
             case 2:
-              _launchURL('https://www.google.com/maps/search/?api=1&query=Shop+Location');
+              _launchURL(
+                  'https://www.google.com/maps/search/?api=1&query=Shop+Location');
               break;
           }
         },
       ),
     );
   }
+
+  List<Map<String, dynamic>> _getTodayFestivals() {
+    DateTime now = DateTime.now();
+    // Remove time component from now
+    DateTime today = DateTime(now.year, now.month, now.day);
+
+    List<Map<String, dynamic>> todayFestivals = _upcomingFestivals
+        .where((festival) {
+      DateTime festivalDate = DateTime.parse(festival['date']);
+      // Remove time component from festival date
+      DateTime festivalDay = DateTime(festivalDate.year, festivalDate.month, festivalDate.day);
+      return festivalDay.isAtSameMomentAs(today);
+    })
+        .toList();
+
+    // Also check past festivals if there are any festivals today
+    todayFestivals.addAll(_pastFestivals
+        .where((festival) {
+      DateTime festivalDate = DateTime.parse(festival['date']);
+      DateTime festivalDay = DateTime(festivalDate.year, festivalDate.month, festivalDate.day);
+      return festivalDay.isAtSameMomentAs(today);
+    })
+    );
+
+    return todayFestivals;
+  }
+
 }
