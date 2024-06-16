@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sweets/pages/festivals.dart';
-import 'package:sweets/pages/about.dart';
-import 'package:sweets/pages/social_media.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
-import '../main.dart'; // Import main.dart to access HomeScreen
+import '../main.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -113,6 +110,38 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     );
   }
 
+  void _showContactUsDialog(BuildContext context) {
+    // Generate random phone number and email
+    String phoneNumber = '+91 1234567890'; // Replace with actual random generator
+    String emailAddress = 'contact@gmail.com'; // Replace with actual random generator
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Contact Us"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text('Phone: $phoneNumber'),
+              SizedBox(height: 10),
+              Text('Email: $emailAddress'),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
   Widget buildCard(String imageUrl, String title) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -165,21 +194,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(widget.title, textAlign: TextAlign.center),
           centerTitle: true,
-          leading: PopupMenuButton<String>(
-            itemBuilder: (BuildContext context) {
-              return ['Upcoming Festivals', 'New Beginnings(Story)', 'Social Media'].map((String choice) {
-                return PopupMenuItem<String>(
-                  value: choice.toLowerCase().replaceAll(' ', ''), // Example: 'upcomingFestivals'
-                  child: Text(choice),
-                );
-              }).toList();
-            },
-            onSelected: (String routeName) {
-              Navigator.pushNamed(context, '/$routeName');
-            },
-          ),
-
-            actions: [
+          actions: [
             IconButton(
               icon: const Icon(Icons.home),
               onPressed: () {
@@ -298,7 +313,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           onTap: (int index) {
             switch (index) {
               case 0:
-                _launchURL('mailto:contact@gmail.com');
+                _showContactUsDialog(context);
                 break;
               case 1:
                 _showOrderMethodDialog(context);
@@ -316,11 +331,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 
 void main() {
   runApp(MaterialApp(
-    routes: {
-      '/upcomingFestivals': (context) => Page3(),
-      '/newBeginnings': (context) => Page5(),
-      '/socialMedia': (context) => Page6(),
-    },
     home: MyHomePage(title: 'Shop Offers'),
   ));
 }

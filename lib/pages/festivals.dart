@@ -87,6 +87,38 @@ class _Page3State extends State<Page3> {
     );
   }
 
+  void _showContactUsDialog(BuildContext context) {
+    // Generate random phone number and email
+    String phoneNumber = '+91 1234567890'; // Replace with actual random generator
+    String emailAddress = 'contact@gmail.com'; // Replace with actual random generator
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Contact Us"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text('Phone: $phoneNumber'),
+              SizedBox(height: 10),
+              Text('Email: $emailAddress'),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void _startAutoUpdate() {
     _timer = Timer.periodic(Duration(minutes: 5), (timer) {
       _loadFestivalData();
@@ -162,7 +194,7 @@ class _Page3State extends State<Page3> {
         onTap: (int index) {
           switch (index) {
             case 0:
-              _launchURL('mailto:contact@gmail.com');
+              _showContactUsDialog(context);
               break;
             case 1:
               _showOrderMethodDialog(context);
