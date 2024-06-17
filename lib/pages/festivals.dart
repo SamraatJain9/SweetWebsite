@@ -133,7 +133,7 @@ class _Page3State extends State<Page3> {
       List<Map<String, dynamic>> upcomingFestivals = [];
 
       for (var item in data) {
-        DateTime festivalDate = DateTime.parse(item['date']);
+        DateTime festivalDate = _parseDate(item['date']);
         if (festivalDate.isBefore(now)) {
           pastFestivals.add(item);
         } else {
@@ -150,6 +150,35 @@ class _Page3State extends State<Page3> {
     }
   }
 
+  DateTime _parseDate(String date) {
+    List<String> parts = date.split('-');
+    int day = int.parse(parts[0]);
+    int month = int.parse(parts[1]);
+    int year = int.parse(parts[2]);
+    return DateTime(year, month, day);
+  }
+
+  List<Map<String, dynamic>> _getTodayFestivals() {
+    DateTime now = DateTime.now();
+    DateTime today = DateTime(now.year, now.month, now.day);
+
+    List<Map<String, dynamic>> todayFestivals = _upcomingFestivals
+        .where((festival) {
+      DateTime festivalDate = _parseDate(festival['date']);
+      DateTime festivalDay = DateTime(festivalDate.year, festivalDate.month, festivalDate.day);
+      return festivalDay.isAtSameMomentAs(today);
+    }).toList();
+
+    todayFestivals.addAll(_pastFestivals
+        .where((festival) {
+      DateTime festivalDate = _parseDate(festival['date']);
+      DateTime festivalDay = DateTime(festivalDate.year, festivalDate.month, festivalDate.day);
+      return festivalDay.isAtSameMomentAs(today);
+    }));
+
+    return todayFestivals;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,92 +190,91 @@ class _Page3State extends State<Page3> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-          children: [
-            Text(
-              'Eat Pure, Gift Pure',
-              style: TextStyle(
-                fontSize: 20,
-                // Adjust the font size as needed
+            children: [
+              Text(
+                'Eat Pure, Gift Pure',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            // Today's Festivals
-            Card(
-              margin: EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Today\'s Festivals',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  if (_getTodayFestivals().isEmpty)
+              const SizedBox(height: 16),
+              // Today's Festivals
+              Card(
+                margin: EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('No festivals today'),
-                    )
-                  else
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: _getTodayFestivals().length,
-                      itemBuilder: (context, index) {
-                        var festival = _getTodayFestivals()[index];
-                        return ListTile(
-                          title: Text(festival['name']),
-                          subtitle: Text(festival['date']),
-                        );
-                      },
+                      child: Text(
+                        'Today\'s Festivals',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                ],
+                    if (_getTodayFestivals().isEmpty)
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('No festivals today'),
+                      )
+                    else
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: _getTodayFestivals().length,
+                        itemBuilder: (context, index) {
+                          var festival = _getTodayFestivals()[index];
+                          return ListTile(
+                            title: Text(festival['name']),
+                            subtitle: Text(festival['date']),
+                          );
+                        },
+                      ),
+                  ],
+                ),
               ),
-            ),
 
-            // Upcoming Festivals
-            Card(
-              margin: EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Upcoming Festivals',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  if (_upcomingFestivals.isEmpty)
+              // Upcoming Festivals
+              Card(
+                margin: EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('No upcoming festivals'),
-                    )
-                  else
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: _upcomingFestivals.length,
-                      itemBuilder: (context, index) {
-                        var festival = _upcomingFestivals[index];
-                        return ListTile(
-                          title: Text(festival['name']),
-                          subtitle: Text(festival['date']),
-                        );
-                      },
+                      child: Text(
+                        'Upcoming Festivals',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                ],
+                    if (_upcomingFestivals.isEmpty)
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('No upcoming festivals'),
+                      )
+                    else
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: _upcomingFestivals.length,
+                        itemBuilder: (context, index) {
+                          var festival = _upcomingFestivals[index];
+                          return ListTile(
+                            title: Text(festival['name']),
+                            subtitle: Text(festival['date']),
+                          );
+                        },
+                      ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -281,31 +309,4 @@ class _Page3State extends State<Page3> {
       ),
     );
   }
-
-  List<Map<String, dynamic>> _getTodayFestivals() {
-    DateTime now = DateTime.now();
-    // Remove time component from now
-    DateTime today = DateTime(now.year, now.month, now.day);
-
-    List<Map<String, dynamic>> todayFestivals = _upcomingFestivals
-        .where((festival) {
-      DateTime festivalDate = DateTime.parse(festival['date']);
-      // Remove time component from festival date
-      DateTime festivalDay = DateTime(festivalDate.year, festivalDate.month, festivalDate.day);
-      return festivalDay.isAtSameMomentAs(today);
-    })
-        .toList();
-
-    // Also check past festivals if there are any festivals today
-    todayFestivals.addAll(_pastFestivals
-        .where((festival) {
-      DateTime festivalDate = DateTime.parse(festival['date']);
-      DateTime festivalDay = DateTime(festivalDate.year, festivalDate.month, festivalDate.day);
-      return festivalDay.isAtSameMomentAs(today);
-    })
-    );
-
-    return todayFestivals;
-  }
-
 }
