@@ -90,7 +90,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'Eat Pure, Gift Pure',
               style: TextStyle(
-                fontSize: 20, // Adjust the font size as needed
+                fontSize: 18, // Adjust the font size as needed
               ),
             ),
             const SizedBox(height: 16), // Add some spacing below the welcome text
