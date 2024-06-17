@@ -104,7 +104,7 @@ class _SplashScreenState extends State<SplashScreen> {
             buildNavigationCard(context, 'Restaurant', Page4(), 'Click here', isFullWidth: true),
             Row(
               children: [
-                Expanded(child: buildNavigationCard(context, 'Festivals & Gifting', Page3(), 'Click here')),
+                Expanded(child: buildNavigationCard(context, 'Festivals - Gifts', Page3(), 'Click here')),
                 Expanded(child: buildNavigationCard(context, 'Offers', Page2(), 'Click here')),
               ],
             ),
