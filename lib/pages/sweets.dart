@@ -194,17 +194,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(widget.title, textAlign: TextAlign.center),
           centerTitle: true,
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.home),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                );
-              },
-            ),
-          ],
+
           bottom: TabBar(
             controller: _tabController,
             tabs: const [
