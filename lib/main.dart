@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Initial Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.redAccent),
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        backgroundColor: Color(0xFFF5F5DC),
       ),
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false, // Remove the debug banner
@@ -73,22 +74,30 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-  class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Swarnikaa'),
+        title: Text('Swarnikaa'.toUpperCase(),
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Roboto Regular',
+          ),
+        ),
         centerTitle: true,
+        backgroundColor: Color(0xFFF5F5DC),
       ),
+      backgroundColor: Color(0xFFF5F5DC),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             Text(
-              'Eat Pure, Gift Pure',
+              'Eat Pure, Gift Pure'.toUpperCase(), // Convert text to uppercase
               style: TextStyle(
                 fontSize: 18, // Adjust the font size as needed
               ),
@@ -100,7 +109,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Expanded(child: buildNavigationCard(context, 'Uber Eats', 'https://ubereats.com', 'Order here', isUrl: true)),
               ],
             ),
-            buildNavigationCard(context, 'Sweets/Bakery', MyHomePage(title: 'Eat Pure, Gift Pure'), 'Click here', isFullWidth: true),
+            buildNavigationCard(context, 'Sweets/Bakery', MyHomePage(title: 'Eat Pure, Gift Pure | Sweets'), 'Click here', isFullWidth: true),
             buildNavigationCard(context, 'Restaurant', Page4(), 'Click here', isFullWidth: true),
             Row(
               children: [
@@ -133,6 +142,13 @@ class _SplashScreenState extends State<SplashScreen> {
           }
         },
         child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0), // Adjust the border radius as needed
+            side: BorderSide(
+              color: Color(0xFFFFD700), // Silver color
+              width: 2.0, // Adjust the width of the border
+            ),
+          ),
           child: Container(
             width: isFullWidth ? double.infinity : null,
             height: 100, // Adjust the height as needed
@@ -140,12 +156,12 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  label,
+                  label.toUpperCase(), // Convert label text to uppercase
                   style: const TextStyle(fontSize: 24),
                 ),
                 const SizedBox(height: 8), // Add some spacing between the texts
                 Text(
-                  subLabel,
+                  subLabel.toUpperCase(), // Convert subLabel text to uppercase
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.grey,

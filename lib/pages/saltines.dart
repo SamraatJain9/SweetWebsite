@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:sweets/pages/bakery.dart';
-import 'package:sweets/pages/saltines.dart';
+import 'package:sweets/pages/sweets.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
 import '../main.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MySaltyPage extends StatefulWidget {
+  const MySaltyPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MySaltyPage> createState() => _MySaltyPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final ScrollController _scrollController = ScrollController();
   int _selectedSweet = 1;
@@ -186,6 +186,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -199,9 +200,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           bottom: TabBar(
             controller: _tabController,
             tabs: const [
-              Tab(text: 'Sweets Type1'),
-              Tab(text: 'Sweets Type2'),
-              Tab(text: 'Sweets Type3'),
+              Tab(text: 'Salty Type1'),
+              Tab(text: 'Salty Type2'),
+              Tab(text: 'Salty Type3'),
             ],
           ),
         ),
@@ -223,10 +224,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Saltines')),
+                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Sweets')),
                             );
                             setState(() {
-                              _selectedSweet = 2; // Set to 2 for Type2
+                              _selectedSweet = 1; // Set to 1 for Type1
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -234,75 +235,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               );
                             });
                           },
-                          child: Text("Saltines"),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const MyBakeryPage(title: 'Bakery')),
-                            );
-                            setState(() {
-                              _selectedSweet = 3; // Set to 3 for Type3
-                              _scrollController.animateTo(
-                                0.0,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            });
-                          },
-                          child: Text("Bakery"),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // List of sweets cards
-                Expanded(
-                  child: Scrollbar(
-                    thumbVisibility: true, // Ensure the scrollbar is always visible
-                    controller: _scrollController,
-                    child: ListView(
-                      controller: _scrollController,
-                      children: [
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1A'),
-                        buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1B'),
-                      ],
-                    ),
-                  )
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                // Side panel
-                Container(
-                  width: 150, // Adjust the width as needed
-                  color: Colors.redAccent, // Example background color
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Saltines')),
-                            );
-                            setState(() {
-                              _selectedSweet = 2; // Set to 2 for Type2
-                              _scrollController.animateTo(
-                                0.0,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            });
-                          },
-                          child: Text("Saltines"),
+                          child: Text("Sweets"),
                         ),
                       ),
                       Padding(
@@ -337,8 +270,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2A'),
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2B'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 1A'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 1B'),
                         ],
                       ),
                     )
@@ -360,10 +293,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Saltines')),
+                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Sweets')),
                             );
                             setState(() {
-                              _selectedSweet = 2; // Set to 2 for Type2
+                              _selectedSweet = 1; // Set to 1 for Type1
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -371,7 +304,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               );
                             });
                           },
-                          child: Text("Saltines"),
+                          child: Text("Sweets"),
                         ),
                       ),
                       Padding(
@@ -406,8 +339,77 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3A'),
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3B'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 2A'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 2B'),
+                        ],
+                      ),
+                    )
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                // Side panel
+                Container(
+                  width: 150, // Adjust the width as needed
+                  color: Colors.redAccent, // Example background color
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Sweets')),
+                            );
+                            setState(() {
+                              _selectedSweet = 1; // Set to 1 for Type1
+                              _scrollController.animateTo(
+                                0.0,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                              );
+                            });
+                          },
+                          child: Text("Sweets"),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const MyBakeryPage(title: 'Bakery')),
+                            );
+                            setState(() {
+                              _selectedSweet = 3; // Set to 3 for Type3
+                              _scrollController.animateTo(
+                                0.0,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                              );
+                            });
+                          },
+                          child: Text("Bakery"),
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+                // List of sweets cards
+                Expanded(
+                    child: Scrollbar(
+                      thumbVisibility: true, // Ensure the scrollbar is always visible
+                      controller: _scrollController,
+                      child: ListView(
+                        controller: _scrollController,
+                        children: [
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 3A'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 3B'),
                         ],
                       ),
                     )
@@ -452,6 +454,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 }
 void main() {
   runApp(MaterialApp(
-    home: MyHomePage(title: 'Shop Offers'),
+    home: MySaltyPage(title: 'Shop Offers'),
   ));
 }
