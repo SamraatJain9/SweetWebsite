@@ -84,7 +84,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               children: <Widget>[
                 TextButton(
                   onPressed: () {
-                    // Launch Uber Eats link
                     _launchURL('https://www.ubereats.com');
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Uber Eats clicked')),
@@ -95,7 +94,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 ),
                 TextButton(
                   onPressed: () {
-                    // Launch Deliveroo link
                     _launchURL('https://www.deliveroo.com');
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Deliveroo clicked')),
@@ -113,7 +111,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   }
 
   void _showContactUsDialog(BuildContext context) {
-    // Generate random phone number and email
     String phoneNumber = '+91 1234567890'; // Replace with actual random generator
     String emailAddress = 'contact@gmail.com'; // Replace with actual random generator
 
@@ -143,7 +140,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       },
     );
   }
-
 
   Widget buildCard(String imageUrl, String title) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -195,7 +191,18 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(widget.title, textAlign: TextAlign.center),
           centerTitle: true,
-
+          actions: [
+            IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp()),
+                      (Route<dynamic> route) => false,
+                );
+              },
+            ),
+          ],
           bottom: TabBar(
             controller: _tabController,
             tabs: const [
@@ -210,15 +217,14 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           children: [
             Row(
               children: [
-                // Side panel
                 Container(
-                  width: 135, // Adjust the width as needed
-                  color: Colors.redAccent, // Example background color
+                  width: 135,
+                  color: Colors.redAccent,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -226,7 +232,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 2; // Set to 2 for Type2
+                              _selectedSweet = 2;
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -238,7 +244,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -246,7 +252,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MyBakeryPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 3; // Set to 3 for Type3
+                              _selectedSweet = 3;
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -260,33 +266,31 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     ],
                   ),
                 ),
-                // List of sweets cards
                 Expanded(
-                  child: Scrollbar(
-                    thumbVisibility: true, // Ensure the scrollbar is always visible
-                    controller: _scrollController,
-                    child: ListView(
+                    child: Scrollbar(
+                      thumbVisibility: true,
                       controller: _scrollController,
-                      children: [
+                      child: ListView(
+                        controller: _scrollController,
+                        children: [
                           buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1A'),
-                        buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1B'),
-                      ],
-                    ),
-                  )
+                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1B'),
+                        ],
+                      ),
+                    )
                 ),
               ],
             ),
             Row(
               children: [
-                // Side panel
                 Container(
-                  width: 150, // Adjust the width as needed
-                  color: Colors.redAccent, // Example background color
+                  width: 150,
+                  color: Colors.redAccent,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -294,7 +298,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 2; // Set to 2 for Type2
+                              _selectedSweet = 2;
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -306,7 +310,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -314,7 +318,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MyBakeryPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 3; // Set to 3 for Type3
+                              _selectedSweet = 3;
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -325,14 +329,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                           child: Text("Bakery"),
                         ),
                       ),
-
                     ],
                   ),
                 ),
-                // List of sweets cards
                 Expanded(
                     child: Scrollbar(
-                      thumbVisibility: true, // Ensure the scrollbar is always visible
+                      thumbVisibility: true,
                       controller: _scrollController,
                       child: ListView(
                         controller: _scrollController,
@@ -347,15 +349,14 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             ),
             Row(
               children: [
-                // Side panel
                 Container(
-                  width: 150, // Adjust the width as needed
-                  color: Colors.redAccent, // Example background color
+                  width: 150,
+                  color: Colors.redAccent,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -363,7 +364,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 2; // Set to 2 for Type2
+                              _selectedSweet = 2;
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -375,7 +376,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
+                        padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -383,7 +384,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MyBakeryPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 3; // Set to 3 for Type3
+                              _selectedSweet = 3;
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -394,14 +395,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                           child: Text("Bakery"),
                         ),
                       ),
-
                     ],
                   ),
                 ),
-                // List of sweets cards
                 Expanded(
                     child: Scrollbar(
-                      thumbVisibility: true, // Ensure the scrollbar is always visible
+                      thumbVisibility: true,
                       controller: _scrollController,
                       child: ListView(
                         controller: _scrollController,
@@ -416,7 +415,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             ),
           ],
         ),
-
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -450,6 +448,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     );
   }
 }
+
 void main() {
   runApp(MaterialApp(
     home: MyHomePage(title: 'Shop Offers'),

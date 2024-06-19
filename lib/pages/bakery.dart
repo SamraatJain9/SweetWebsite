@@ -196,6 +196,18 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(widget.title, textAlign: TextAlign.center),
           centerTitle: true,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp()),
+                      (Route<dynamic> route) => false,
+                );
+              },
+            ),
+          ],
 
           bottom: TabBar(
             controller: _tabController,
