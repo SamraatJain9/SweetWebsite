@@ -224,7 +224,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Sweets')),
+                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Eat Pure, Gift Pure | Sweets')),
                             );
                             setState(() {
                               _selectedSweet = 1; // Set to 1 for Type1
@@ -244,7 +244,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Saltines')),
+                              MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure | Saltines')),
                             );
                             setState(() {
                               _selectedSweet = 2; // Set to 2 for Type2
@@ -292,7 +292,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Sweets')),
+                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Eat Pure, Gift Pure | Sweets')),
                             );
                             setState(() {
                               _selectedSweet = 1; // Set to 1 for Type1
@@ -312,7 +312,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Saltines')),
+                              MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure | Saltines')),
                             );
                             setState(() {
                               _selectedSweet = 2; // Set to 2 for Type2
@@ -361,7 +361,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Sweets')),
+                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Eat Pure, Gift Pure | Sweets')),
                             );
                             setState(() {
                               _selectedSweet = 1; // Set to 1 for Type1
@@ -381,7 +381,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Saltines')),
+                              MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure | Saltines')),
                             );
                             setState(() {
                               _selectedSweet = 2; // Set to 2 for Type2
