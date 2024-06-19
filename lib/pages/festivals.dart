@@ -183,6 +183,7 @@ class _Page3State extends State<Page3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Festival Timeline'),
         centerTitle: true,
       ),

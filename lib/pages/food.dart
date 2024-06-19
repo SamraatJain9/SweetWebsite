@@ -110,6 +110,7 @@ class Page4 extends StatelessWidget {
         return AlertDialog(
           title: Center(child: Text("Pure Vegetarian Menu")),
           content: Container(
+            color: Colors.redAccent,
             width: MediaQuery.of(context).size.width * 0.3, // 80% of screen width
             child: SingleChildScrollView(
               child: Column(
@@ -149,6 +150,7 @@ class Page4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Fast Food'),
         centerTitle: true,
         bottom: PreferredSize(

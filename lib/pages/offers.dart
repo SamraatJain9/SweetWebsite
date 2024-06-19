@@ -135,6 +135,7 @@ class _Page2State extends State<Page2> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Offers'),
         centerTitle: true, // Center the appbar title
       ),
