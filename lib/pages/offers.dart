@@ -18,7 +18,7 @@ class _Page2State extends State<Page2> {
   }
 
   void _autoScroll() {
-    Timer.periodic(Duration(seconds: 2), (timer) {
+    Timer.periodic(Duration(seconds: 8), (timer) {
       if (_scrollController.hasClients) {
         final maxScrollExtent = _scrollController.position.maxScrollExtent;
         final currentScrollPosition = _scrollController.position.pixels;
