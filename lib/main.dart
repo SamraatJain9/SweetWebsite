@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Color(0xFFF5F5DC),
       ),
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false, // Remove the debug banner
