@@ -9,7 +9,7 @@ class Page2 extends StatefulWidget {
 
 class _Page2State extends State<Page2> {
   final ScrollController _scrollController = ScrollController();
-  final List<String> offers = ['Offer 1', 'Offer 2', 'Offer 3'];
+  final List<String> offers = ['Offer 1', 'Offer 2', 'Offer 3', 'Offer 4', 'Offer 5'];
 
   @override
   void initState() {
