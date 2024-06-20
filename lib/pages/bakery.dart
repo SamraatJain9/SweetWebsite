@@ -153,7 +153,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
       alignment: Alignment.centerRight,
       child: SizedBox(
         height: cardHeight,
-        child: SingleChildScrollView( // Wrap the Card with SingleChildScrollView
+        child: SingleChildScrollView(
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
@@ -187,6 +187,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
   }
 
 
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -212,9 +213,8 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
           bottom: TabBar(
             controller: _tabController,
             tabs: const [
-              Tab(text: 'Bake|Type1'),
-              Tab(text: 'Bake|Type2'),
-              Tab(text: 'Bake|Type3'),
+              Tab(text: 'Cakes|Pastries'),
+              Tab(text: 'Baked Items'),
             ],
           ),
         ),
@@ -281,8 +281,8 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 1A'),
-                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 1B'),
+                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 1A\nShelf Life:'),
+                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 1B\nShelf Life:'),
                         ],
                       ),
                     )
@@ -350,76 +350,8 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 2A'),
-                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 2B'),
-                        ],
-                      ),
-                    )
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                // Side panel
-                Container(
-                  width: 150, // Adjust the width as needed
-                  color: Colors.redAccent, // Example background color
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Eat Pure, Gift Pure')),
-                            );
-                            setState(() {
-                               // Set to 1 for Type1
-                              _scrollController.animateTo(
-                                0.0,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            });
-                          },
-                          child: Text("Sweets"),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure')),
-                            );
-                            setState(() {// Set to 2 for Type2
-                              _scrollController.animateTo(
-                                0.0,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            });
-                          },
-                          child: Text("Saltines"),
-                        ),
-                      ),
-
-                    ],
-                  ),
-                ),
-                // List of sweets cards
-                Expanded(
-                    child: Scrollbar(
-                      thumbVisibility: true, // Ensure the scrollbar is always visible
-                      controller: _scrollController,
-                      child: ListView(
-                        controller: _scrollController,
-                        children: [
-                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 3A'),
-                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 3B'),
+                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 2A\nShelf Life:'),
+                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 2B\nShelf Life:'),
                         ],
                       ),
                     )

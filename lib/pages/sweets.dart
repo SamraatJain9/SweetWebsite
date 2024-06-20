@@ -27,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   }
 
   void _autoScroll() {
-    Timer.periodic(Duration(seconds: 12), (timer) {
+    Timer.periodic(Duration(seconds: 3), (timer) {
       if (_scrollController.hasClients) {
         final maxScrollExtent = _scrollController.position.maxScrollExtent;
         final currentScrollPosition = _scrollController.position.pixels;
@@ -149,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       alignment: Alignment.centerRight,
       child: SizedBox(
         height: cardHeight,
-        child: SingleChildScrollView( // Wrap the Card with SingleChildScrollView
+        child: SingleChildScrollView(
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
@@ -181,6 +181,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -273,8 +274,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1A'),
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1B'),
+                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1A\nShelf Life:'),
+                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1B\nShelf Life:'),
                         ],
                       ),
                     )
@@ -339,8 +340,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2A'),
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2B'),
+                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2A\nShelf Life:'),
+                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2B\nShelf Life:'),
                         ],
                       ),
                     )
@@ -405,8 +406,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3A'),
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3B'),
+                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3A\nShelf Life:'),
+                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3B\nShelf Life:'),
                         ],
                       ),
                     )

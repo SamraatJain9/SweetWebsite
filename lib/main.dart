@@ -108,7 +108,7 @@ class HomeScreen extends StatelessWidget {
                 Expanded(child: buildNavigationCard(context, 'Uber Eats', 'https://ubereats.com', 'Order here', isUrl: true)),
               ],
             ),
-            buildNavigationCard(context, 'Sweets/Bakery', MyHomePage(title: 'Eat Pure, Gift Pure'), 'Click here', isFullWidth: true),
+            buildNavigationCard(context, 'Mithai Mandapam', MyHomePage(title: 'Eat Pure, Gift Pure'), 'Click here', isFullWidth: true),
             buildNavigationCard(context, 'Restaurant', Page4(), 'Click here', isFullWidth: true),
             Row(
               children: [

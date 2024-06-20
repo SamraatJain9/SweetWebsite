@@ -27,7 +27,7 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
   }
 
   void _autoScroll() {
-    Timer.periodic(Duration(seconds: 12), (timer) {
+    Timer.periodic(Duration(seconds: 3), (timer) {
       if (_scrollController.hasClients) {
         final maxScrollExtent = _scrollController.position.maxScrollExtent;
         final currentScrollPosition = _scrollController.position.pixels;
@@ -153,7 +153,7 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
       alignment: Alignment.centerRight,
       child: SizedBox(
         height: cardHeight,
-        child: SingleChildScrollView( // Wrap the Card with SingleChildScrollView
+        child: SingleChildScrollView(
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
@@ -187,6 +187,7 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
   }
 
 
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -214,7 +215,6 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
             tabs: const [
               Tab(text: 'Salty|Type1'),
               Tab(text: 'Salty|Type2'),
-              Tab(text: 'Salty|Type3'),
             ],
           ),
         ),
@@ -282,8 +282,8 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 1A'),
-                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 1B'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 1A\nShelf Life:'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 1B\nShelf Life:'),
                         ],
                       ),
                     )
@@ -351,77 +351,8 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 2A'),
-                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 2B'),
-                        ],
-                      ),
-                    )
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                // Side panel
-                Container(
-                  width: 150, // Adjust the width as needed
-                  color: Colors.redAccent, // Example background color
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Eat Pure, Gift Pure')),
-                            );
-                            setState(() {
-                               // Set to 1 for Type1
-                              _scrollController.animateTo(
-                                0.0,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            });
-                          },
-                          child: Text("Sweets"),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust horizontal padding as needed
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const MyBakeryPage(title: 'Eat Pure, Gift Pure')),
-                            );
-                            setState(() {
-                               // Set to 3 for Type3
-                              _scrollController.animateTo(
-                                0.0,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            });
-                          },
-                          child: Text("Bakery"),
-                        ),
-                      ),
-
-                    ],
-                  ),
-                ),
-                // List of sweets cards
-                Expanded(
-                    child: Scrollbar(
-                      thumbVisibility: true, // Ensure the scrollbar is always visible
-                      controller: _scrollController,
-                      child: ListView(
-                        controller: _scrollController,
-                        children: [
-                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 3A'),
-                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 3B'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 2A\nShelf Life:'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 2B\nShelf Life:'),
                         ],
                       ),
                     )
