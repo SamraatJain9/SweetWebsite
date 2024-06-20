@@ -194,7 +194,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title, textAlign: TextAlign.center),
+          title: Text(widget.title, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
           centerTitle: true,
           actions: [
             IconButton(
@@ -212,9 +212,9 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
           bottom: TabBar(
             controller: _tabController,
             tabs: const [
-              Tab(text: 'Baked Type1'),
-              Tab(text: 'Baked Type2'),
-              Tab(text: 'Baked Type3'),
+              Tab(text: 'Bake|Type1'),
+              Tab(text: 'Bake|Type2'),
+              Tab(text: 'Bake|Type3'),
             ],
           ),
         ),

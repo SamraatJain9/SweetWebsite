@@ -189,8 +189,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title, textAlign: TextAlign.center),
+          title: Text(widget.title, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
           centerTitle: true,
+
           actions: [
             IconButton(
               icon: Icon(Icons.home),
@@ -206,9 +207,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           bottom: TabBar(
             controller: _tabController,
             tabs: const [
-              Tab(text: 'Sweets Type1'),
-              Tab(text: 'Sweets Type2'),
-              Tab(text: 'Sweets Type3'),
+              Tab(text: 'Sweet|Type1'),
+              Tab(text: 'Sweet|Type2'),
+              Tab(text: 'Sweet|Type3'),
             ],
           ),
         ),

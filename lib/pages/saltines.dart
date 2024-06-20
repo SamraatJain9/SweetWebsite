@@ -194,7 +194,7 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title, textAlign: TextAlign.center),
+          title: Text(widget.title, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
           centerTitle: true,
           actions: [
             IconButton(
@@ -212,9 +212,9 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
           bottom: TabBar(
             controller: _tabController,
             tabs: const [
-              Tab(text: 'Salty Type1'),
-              Tab(text: 'Salty Type2'),
-              Tab(text: 'Salty Type3'),
+              Tab(text: 'Salty|Type1'),
+              Tab(text: 'Salty|Type2'),
+              Tab(text: 'Salty|Type3'),
             ],
           ),
         ),
