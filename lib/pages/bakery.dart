@@ -17,7 +17,7 @@ class MyBakeryPage extends StatefulWidget {
 class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final ScrollController _scrollController = ScrollController();
-  int _selectedSweet = 1;
+
 
   @override
   void initState() {
@@ -239,7 +239,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                               MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 1; // Set to 1 for Type1
+
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -259,7 +259,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                               MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 2; // Set to 2 for Type2
+                               // Set to 2 for Type2
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -307,7 +307,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                               MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 1; // Set to 1 for Type1
+                              // Set to 1 for Type1
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -327,7 +327,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                               MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 2; // Set to 2 for Type2
+                               // Set to 2 for Type2
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -376,7 +376,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                               MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 1; // Set to 1 for Type1
+                               // Set to 1 for Type1
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -395,8 +395,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                               context,
                               MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure')),
                             );
-                            setState(() {
-                              _selectedSweet = 2; // Set to 2 for Type2
+                            setState(() {// Set to 2 for Type2
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),

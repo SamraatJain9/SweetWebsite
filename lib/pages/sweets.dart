@@ -17,7 +17,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final ScrollController _scrollController = ScrollController();
-  int _selectedSweet = 1;
+
 
   @override
   void initState() {
@@ -233,7 +233,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 2;
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -253,7 +252,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MyBakeryPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 3;
+
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -299,7 +298,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 2;
+
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -319,7 +318,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MyBakeryPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 3;
+
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -365,7 +364,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MySaltyPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 2;
+
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
@@ -385,7 +384,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               MaterialPageRoute(builder: (context) => const MyBakeryPage(title: 'Eat Pure, Gift Pure')),
                             );
                             setState(() {
-                              _selectedSweet = 3;
+
                               _scrollController.animateTo(
                                 0.0,
                                 duration: Duration(milliseconds: 500),
