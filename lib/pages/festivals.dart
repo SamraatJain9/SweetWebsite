@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(Page3App());
 
@@ -51,8 +52,10 @@ class _Page3State extends State<Page3> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Choose Delivery Service"),
-          contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0),
+          title: Text("Choose Delivery Service",
+            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+          ),
+          contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0), // Adjust padding as needed
           actions: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,9 +66,11 @@ class _Page3State extends State<Page3> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Uber Eats clicked')),
                     );
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Uber Eats"),
+                  child: Text("Uber Eats",
+                    style: GoogleFonts.montserrat(),
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
@@ -73,9 +78,11 @@ class _Page3State extends State<Page3> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Deliveroo clicked')),
                     );
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Deliveroo"),
+                  child: Text("Deliveroo",
+                    style: GoogleFonts.montserrat(),
+                  ),
                 ),
               ],
             ),
@@ -93,14 +100,14 @@ class _Page3State extends State<Page3> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Contact Us"),
+          title: Text("Contact Us", style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('Phone: $phoneNumber'),
+              Text('Phone: $phoneNumber', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
               SizedBox(height: 10),
-              Text('Email: $emailAddress'),
+              Text('Email: $emailAddress', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
             ],
           ),
           actions: <Widget>[
@@ -184,7 +191,7 @@ class _Page3State extends State<Page3> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Festival Timeline'),
+        title: Text('Festival Timeline', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -194,9 +201,11 @@ class _Page3State extends State<Page3> {
             children: [
               Text(
                 'Eat Pure, Gift Pure',
-                style: TextStyle(
+                style: GoogleFonts.montserrat(
+                  textStyle: TextStyle(
                   fontSize: 20,
                 ),
+              ),
               ),
               const SizedBox(height: 16),
               // Today's Festivals
@@ -209,16 +218,18 @@ class _Page3State extends State<Page3> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Today\'s Festivals',
-                        style: TextStyle(
+                        style: GoogleFonts.montserrat(
+                        textStyle: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
+                    ),
                     if (_getTodayFestivals().isEmpty)
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('No festivals today'),
+                        child: Text('No festivals today', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
                       )
                     else
                       ListView.builder(
@@ -228,8 +239,8 @@ class _Page3State extends State<Page3> {
                         itemBuilder: (context, index) {
                           var festival = _getTodayFestivals()[index];
                           return ListTile(
-                            title: Text(festival['name']),
-                            subtitle: Text(festival['date']),
+                            title: Text(festival['name'], style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
+                            subtitle: Text(festival['date'], style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
                           );
                         },
                       ),
@@ -247,16 +258,18 @@ class _Page3State extends State<Page3> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Upcoming Festivals',
-                        style: TextStyle(
+                        style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
+                    ),
                     if (_upcomingFestivals.isEmpty)
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('No upcoming festivals'),
+                        child: Text('No upcoming festivals', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
                       )
                     else
                       ListView.builder(
@@ -266,8 +279,8 @@ class _Page3State extends State<Page3> {
                         itemBuilder: (context, index) {
                           var festival = _upcomingFestivals[index];
                           return ListTile(
-                            title: Text(festival['name']),
-                            subtitle: Text(festival['date']),
+                            title: Text(festival['name'], style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
+                            subtitle: Text(festival['date'], style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
                           );
                         },
                       ),
@@ -302,11 +315,17 @@ class _Page3State extends State<Page3> {
               _showOrderMethodDialog(context);
               break;
             case 2:
-              _launchURL(
-                  'https://www.google.com/maps/search/?api=1&query=Shop+Location');
+              _launchURL('https://www.google.com/maps/search/?api=1&query=Shop+Location');
               break;
           }
         },
+        selectedFontSize: 14.0, // Adjust as needed
+        unselectedFontSize: 14.0, // Adjust as needed
+        selectedItemColor: Colors.redAccent, // Example color
+        unselectedItemColor: Colors.black, // Example color
+        type: BottomNavigationBarType.fixed, // Adjust based on your design
+        selectedLabelStyle: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+        unselectedLabelStyle: GoogleFonts.montserrat(),
       ),
     );
   }

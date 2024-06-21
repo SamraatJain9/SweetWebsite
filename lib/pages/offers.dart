@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
+import 'package:google_fonts/google_fonts.dart';
 
 class Page2 extends StatefulWidget {
   @override
@@ -9,7 +10,13 @@ class Page2 extends StatefulWidget {
 
 class _Page2State extends State<Page2> {
   final ScrollController _scrollController = ScrollController();
-  final List<String> offers = ['Offer 1', 'Offer 2', 'Offer 3', 'Offer 4', 'Offer 5'];
+  final List<String> offers = [
+    'Offer 1',
+    'Offer 2',
+    'Offer 3',
+    'Offer 4',
+    'Offer 5',
+  ];
 
   @override
   void initState() {
@@ -60,33 +67,41 @@ class _Page2State extends State<Page2> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Choose Delivery Service"),
-          contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0), // Adjust padding as needed
+          title: Text(
+            "Choose Delivery Service",
+            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+          ),
+          contentPadding:
+          EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0), // Adjust padding as needed
           actions: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 TextButton(
                   onPressed: () {
-                    // Launch Uber Eats link
                     _launchURL('https://www.ubereats.com');
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Uber Eats clicked')),
                     );
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Uber Eats"),
+                  child: Text(
+                    "Uber Eats",
+                    style: GoogleFonts.montserrat(),
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
-                    // Launch Deliveroo link
                     _launchURL('https://www.deliveroo.com');
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Deliveroo clicked')),
                     );
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Deliveroo"),
+                  child: Text(
+                    "Deliveroo",
+                    style: GoogleFonts.montserrat(),
+                  ),
                 ),
               ],
             ),
@@ -97,7 +112,6 @@ class _Page2State extends State<Page2> {
   }
 
   void _showContactUsDialog(BuildContext context) {
-    // Generate random phone number and email
     String phoneNumber = '+91 1234567890'; // Replace with actual random generator
     String emailAddress = 'contact@gmail.com'; // Replace with actual random generator
 
@@ -105,14 +119,23 @@ class _Page2State extends State<Page2> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Contact Us"),
+          title: Text(
+            "Contact Us",
+            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('Phone: $phoneNumber'),
+              Text(
+                'Phone: $phoneNumber',
+                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+              ),
               SizedBox(height: 10),
-              Text('Email: $emailAddress'),
+              Text(
+                'Email: $emailAddress',
+                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+              ),
             ],
           ),
           actions: <Widget>[
@@ -136,7 +159,10 @@ class _Page2State extends State<Page2> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Offers'),
+        title: Text(
+          'Offers',
+          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true, // Center the appbar title
       ),
       body: Column(
@@ -144,7 +170,9 @@ class _Page2State extends State<Page2> {
           SizedBox(height: 10), // Add some space between the app bar and the text
           Text(
             'Eat Pure, Gift Pure',
-            style: TextStyle(fontSize: 18),
+            style: GoogleFonts.montserrat(
+              textStyle: TextStyle(fontSize: 18),
+            ),
           ),
           Expanded(
             child: ListView.builder(
@@ -164,7 +192,12 @@ class _Page2State extends State<Page2> {
                         child: Container(
                           width: cardWidth,
                           child: ListTile(
-                            title: Center(child: Text(offers[index])),
+                            title: Center(
+                              child: Text(
+                                offers[index],
+                                style: GoogleFonts.montserrat(),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -200,10 +233,18 @@ class _Page2State extends State<Page2> {
               _showOrderMethodDialog(context);
               break;
             case 2:
-              _launchURL('https://www.google.com/maps/search/?api=1&query=Shop+Location');
+              _launchURL(
+                  'https://www.google.com/maps/search/?api=1&query=Shop+Location');
               break;
           }
         },
+        selectedFontSize: 14.0, // Adjust as needed
+        unselectedFontSize: 14.0, // Adjust as needed
+        selectedItemColor: Colors.redAccent, // Example color
+        unselectedItemColor: Colors.black, // Example color
+        type: BottomNavigationBarType.fixed, // Adjust based on your design
+        selectedLabelStyle: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+        unselectedLabelStyle: GoogleFonts.montserrat(),
       ),
     );
   }
