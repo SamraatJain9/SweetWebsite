@@ -4,6 +4,7 @@ import 'pages/sweets.dart';
 import 'pages/offers.dart';
 import 'pages/festivals.dart';
 import 'pages/food.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -80,11 +81,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Swarnikaa'.toUpperCase(),
-          style: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Roboto Regular',
+        title: Text(
+          'Swarnikaa'.toUpperCase(),
+          style: GoogleFonts.montserrat(
+            textStyle: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold, // Montserrat Regular (400)
+            ),
           ),
         ),
         centerTitle: true,
@@ -97,8 +100,11 @@ class HomeScreen extends StatelessWidget {
           children: [
             Text(
               'Eat Pure, Gift Pure'.toUpperCase(), // Convert text to uppercase
-              style: TextStyle(
-                fontSize: 18, // Adjust the font size as needed
+              style: GoogleFonts.montserrat(
+                textStyle: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700, // Montserrat Regular (400)
+                ),
               ),
             ),
             const SizedBox(height: 16), // Add some spacing below the welcome text
@@ -142,28 +148,35 @@ class HomeScreen extends StatelessWidget {
         },
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0), // Adjust the border radius as needed
+            borderRadius: BorderRadius.circular(10.0),
             side: BorderSide(
-              color: Color(0xFFFFD700), // Silver color
-              width: 2.0, // Adjust the width of the border
+              color: Color(0xFFFFD700),
+              width: 2.0,
             ),
           ),
           child: Container(
             width: isFullWidth ? double.infinity : null,
-            height: 100, // Adjust the height as needed
+            height: 100,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  label.toUpperCase(), // Convert label text to uppercase
-                  style: const TextStyle(fontSize: 24),
+                  label.toUpperCase(),
+                  style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500, // Montserrat Bold
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 8), // Add some spacing between the texts
+                const SizedBox(height: 8),
                 Text(
-                  subLabel.toUpperCase(), // Convert subLabel text to uppercase
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
+                  subLabel.toUpperCase(),
+                  style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ],
@@ -173,4 +186,5 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
 }
