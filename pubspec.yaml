@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  google_fonts: ^6.2.0
   flutter:
     sdk: flutter
 
@@ -60,11 +61,20 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: Fonts/Montserrat/static/Montserrat-Regular.ttf
+        - asset: Fonts/Montserrat/static/Montserrat-Bold.ttf
+          weight: 700
+        - asset: Fonts/Montserrat/Montserrat-SemiBold.ttf
+          weight: 600
   assets:
     - assets/festivals.json
     - assets/lk.gif
     - assets/loading.jpeg
     - assets/logopen.jpeg
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
