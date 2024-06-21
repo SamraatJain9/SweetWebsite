@@ -4,6 +4,7 @@ import 'package:sweets/pages/saltines.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
 import '../main.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyBakeryPage extends StatefulWidget {
   const MyBakeryPage({super.key, required this.title});
@@ -76,7 +77,9 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Choose Delivery Service"),
+          title: Text("Choose Delivery Service",
+            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+          ),
           contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0), // Adjust padding as needed
           actions: <Widget>[
             Row(
@@ -84,25 +87,27 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
               children: <Widget>[
                 TextButton(
                   onPressed: () {
-                    // Launch Uber Eats link
                     _launchURL('https://www.ubereats.com');
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Uber Eats clicked')),
                     );
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Uber Eats"),
+                  child: Text("Uber Eats",
+                    style: GoogleFonts.montserrat(),
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
-                    // Launch Deliveroo link
                     _launchURL('https://www.deliveroo.com');
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Deliveroo clicked')),
                     );
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Deliveroo"),
+                  child: Text("Deliveroo",
+                    style: GoogleFonts.montserrat(),
+                  ),
                 ),
               ],
             ),
@@ -113,7 +118,6 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
   }
 
   void _showContactUsDialog(BuildContext context) {
-    // Generate random phone number and email
     String phoneNumber = '+91 1234567890'; // Replace with actual random generator
     String emailAddress = 'contact@gmail.com'; // Replace with actual random generator
 
@@ -121,14 +125,14 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Contact Us"),
+          title: Text("Contact Us", style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('Phone: $phoneNumber'),
+              Text('Phone: $phoneNumber', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
               SizedBox(height: 10),
-              Text('Email: $emailAddress'),
+              Text('Email: $emailAddress', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
             ],
           ),
           actions: <Widget>[
@@ -136,7 +140,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Close'),
+              child: Text('Close', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
             ),
           ],
         );
@@ -175,6 +179,12 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                     child: Text(
                       title,
                       textAlign: TextAlign.center,
+                      style: GoogleFonts.montserrat(
+                        textStyle: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -195,7 +205,16 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+          title: Text(
+            widget.title,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.montserrat(
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                )
+            ),
+          ),
           centerTitle: true,
           actions: [
             IconButton(
@@ -212,11 +231,26 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
 
           bottom: TabBar(
             controller: _tabController,
-            tabs: const [
-              Tab(text: 'Cakes|Pastries'),
-              Tab(text: 'Baked Items'),
-            ],
+              tabs: [
+                Tab(
+                  child: DefaultTextStyle(
+                    style: GoogleFonts.montserrat(
+                      textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text('Cakes|Pastries'),
+                  ),
+                ),
+                Tab(
+                  child: DefaultTextStyle(
+                    style: GoogleFonts.montserrat(
+                      textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  child: const Text('Baked Items'),
+                  ),
+                ),
+              ]
           ),
+
         ),
         body: TabBarView(
           controller: _tabController,
@@ -225,7 +259,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
               children: [
                 // Side panel
                 Container(
-                  width: 135, // Adjust the width as needed
+                  width: 145, // Adjust the width as needed
                   color: Colors.redAccent, // Example background color
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
@@ -247,7 +281,12 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                               );
                             });
                           },
-                          child: Text("Sweets"),
+                          child: Text(
+                            "Sweets",
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
@@ -267,7 +306,12 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                               );
                             });
                           },
-                          child: Text("Saltines"),
+                          child: Text(
+                            "Saltines",
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -315,7 +359,12 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                               );
                             });
                           },
-                          child: Text("Sweets"),
+                          child: Text(
+                            "Sweets",
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
@@ -335,7 +384,12 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                               );
                             });
                           },
-                          child: Text("Saltines"),
+                          child: Text(
+                            "Saltines",
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
 
@@ -360,7 +414,6 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
             ),
           ],
         ),
-
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -389,6 +442,13 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                 break;
             }
           },
+          selectedFontSize: 14.0, // Adjust as needed
+          unselectedFontSize: 14.0, // Adjust as needed
+          selectedItemColor: Colors.redAccent, // Example color
+          unselectedItemColor: Colors.black, // Example color
+          type: BottomNavigationBarType.fixed, // Adjust based on your design
+          selectedLabelStyle: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+          unselectedLabelStyle: GoogleFonts.montserrat(),
         ),
       ),
     );

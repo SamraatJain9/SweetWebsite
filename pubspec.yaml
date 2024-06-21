@@ -67,7 +67,7 @@ flutter:
         - asset: Fonts/Montserrat/static/Montserrat-Regular.ttf
         - asset: Fonts/Montserrat/static/Montserrat-Bold.ttf
           weight: 700
-        - asset: Fonts/Montserrat/Montserrat-SemiBold.ttf
+        - asset: Fonts/Montserrat/static/Montserrat-SemiBold.ttf
           weight: 600
   assets:
     - assets/festivals.json

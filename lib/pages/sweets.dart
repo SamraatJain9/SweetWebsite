@@ -4,6 +4,7 @@ import 'package:sweets/pages/saltines.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
 import '../main.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -76,7 +77,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Choose Delivery Service"),
+          title: Text("Choose Delivery Service",
+            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+          ),
           contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0), // Adjust padding as needed
           actions: <Widget>[
             Row(
@@ -90,7 +93,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     );
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Uber Eats"),
+                  child: Text("Uber Eats",
+                    style: GoogleFonts.montserrat(),
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
@@ -100,7 +105,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     );
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Deliveroo"),
+                  child: Text("Deliveroo",
+                    style: GoogleFonts.montserrat(),
+                  ),
                 ),
               ],
             ),
@@ -118,14 +125,14 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Contact Us"),
+          title: Text("Contact Us", style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('Phone: $phoneNumber'),
+              Text('Phone: $phoneNumber', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
               SizedBox(height: 10),
-              Text('Email: $emailAddress'),
+              Text('Email: $emailAddress', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
             ],
           ),
           actions: <Widget>[
@@ -133,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Close'),
+              child: Text('Close', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
             ),
           ],
         );
@@ -171,6 +178,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     child: Text(
                       title,
                       textAlign: TextAlign.center,
+                      style: GoogleFonts.montserrat(
+                        textStyle: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -190,7 +203,16 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+          title: Text(
+            widget.title,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.montserrat(
+              textStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                    fontSize: 24,
+              )
+            ),
+          ),
           centerTitle: true,
 
           actions: [
@@ -207,12 +229,34 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           ],
           bottom: TabBar(
             controller: _tabController,
-            tabs: const [
-              Tab(text: 'Sweet|Type1'),
-              Tab(text: 'Sweet|Type2'),
-              Tab(text: 'Sweet|Type3'),
+            tabs: [
+              Tab(
+                child: DefaultTextStyle(
+                  style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text('Sweet|Type1'),
+                ),
+              ),
+              Tab(
+                child: DefaultTextStyle(
+                  style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text('Sweet|Type2'),
+                ),
+              ),
+              Tab(
+                child: DefaultTextStyle(
+                  style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text('Sweet|Type3'),
+                ),
+              ),
             ],
           ),
+
         ),
         body: TabBarView(
           controller: _tabController,
@@ -220,7 +264,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             Row(
               children: [
                 Container(
-                  width: 135,
+                  width: 145,
                   color: Colors.redAccent,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -241,7 +285,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               );
                             });
                           },
-                          child: Text("Saltines"),
+                          child: Text(
+                            "Saltines",
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
@@ -261,7 +310,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               );
                             });
                           },
-                          child: Text("Bakery"),
+                          child: Text(
+                              "Bakery",
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -307,7 +361,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               );
                             });
                           },
-                          child: Text("Saltines"),
+                          child: Text(
+                            "Saltines",
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
@@ -327,7 +386,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               );
                             });
                           },
-                          child: Text("Bakery"),
+                          child: Text(
+                            "Bakery",
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -373,7 +437,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               );
                             });
                           },
-                          child: Text("Saltines"),
+                          child: Text(
+                            "Saltines",
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
@@ -393,7 +462,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                               );
                             });
                           },
-                          child: Text("Bakery"),
+                          child: Text(
+                            "Bakery",
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -444,6 +518,13 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 break;
             }
           },
+          selectedFontSize: 14.0, // Adjust as needed
+          unselectedFontSize: 14.0, // Adjust as needed
+          selectedItemColor: Colors.redAccent, // Example color
+          unselectedItemColor: Colors.black, // Example color
+          type: BottomNavigationBarType.fixed, // Adjust based on your design
+          selectedLabelStyle: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+          unselectedLabelStyle: GoogleFonts.montserrat(),
         ),
       ),
     );
