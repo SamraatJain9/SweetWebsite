@@ -11,11 +11,11 @@ class Page2 extends StatefulWidget {
 class _Page2State extends State<Page2> {
   final ScrollController _scrollController = ScrollController();
   final List<String> offers = [
-    'Offer 1',
-    'Offer 2',
-    'Offer 3',
-    'Offer 4',
-    'Offer 5',
+    'Coming Soon...',
+    'Coming Soon...',
+    'Coming Soon...',
+    'Coming Soon...',
+    'Coming Soon...',
   ];
 
   @override
@@ -79,27 +79,21 @@ class _Page2State extends State<Page2> {
               children: <Widget>[
                 TextButton(
                   onPressed: () {
-                    _launchURL('https://www.ubereats.com');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Uber Eats clicked')),
-                    );
+                    _launchURL('https://www.swiggy.com/');
                     Navigator.of(context).pop(); // Close the dialog
                   },
                   child: Text(
-                    "Uber Eats",
+                    "Swiggy",
                     style: GoogleFonts.montserrat(),
                   ),
                 ),
                 TextButton(
                   onPressed: () {
-                    _launchURL('https://www.deliveroo.com');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Deliveroo clicked')),
-                    );
+                    _launchURL('https://www.zomato.com/');
                     Navigator.of(context).pop(); // Close the dialog
                   },
                   child: Text(
-                    "Deliveroo",
+                    "Zomato",
                     style: GoogleFonts.montserrat(),
                   ),
                 ),
@@ -112,8 +106,8 @@ class _Page2State extends State<Page2> {
   }
 
   void _showContactUsDialog(BuildContext context) {
-    String phoneNumber = '+91 1234567890'; // Replace with actual random generator
-    String emailAddress = 'contact@gmail.com'; // Replace with actual random generator
+    String phoneNumber = '+91 8707464728'; // Replace with actual random generator
+    String emailAddress = 'cashcons@gmail.com'; // Replace with actual random generator
 
     showDialog(
       context: context,
@@ -221,7 +215,7 @@ class _Page2State extends State<Page2> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
-            label: 'Google Maps: 123 Blecker Street',
+            label: 'Google Maps: A-17A, Ganesh Nagar, Mansarovar',
           ),
         ],
         onTap: (int index) {
@@ -234,7 +228,7 @@ class _Page2State extends State<Page2> {
               break;
             case 2:
               _launchURL(
-                  'https://www.google.com/maps/search/?api=1&query=Shop+Location');
+          "https://www.google.com/maps/place/26%C2%B850'08.0%22N+75%C2%B045'19.9%22E/@26.8354442,75.7554997,20z/data=!4m4!3m3!8m2!3d26.835552!4d75.755533?entry=ttu");
               break;
           }
         },

@@ -75,6 +75,98 @@ class _SplashScreenState extends State<SplashScreen> {
 }
 
 class HomeScreen extends StatelessWidget {
+
+  void _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  void _showOrderMethodDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Choose Delivery Service",
+            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+          ),
+          contentPadding: EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 0.0), // Adjust padding as needed
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    _launchURL('https://www.swiggy.com/');
+                    Navigator.of(context).pop(); // Close the dialog
+                  },
+                  child: Text(
+                    "Swiggy",
+                    style: GoogleFonts.montserrat(),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    _launchURL('https://www.zomato.com/');
+                    Navigator.of(context).pop(); // Close the dialog
+                  },
+                  child: Text(
+                    "Zomato",
+                    style: GoogleFonts.montserrat(),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showContactUsDialog(BuildContext context) {
+    String phoneNumber = '+91 8707464728'; // Replace with actual random generator
+    String emailAddress = 'cashcons@gmail.com'; // Replace with actual random generator
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Contact Us",
+            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Phone: $phoneNumber',
+                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Email: $emailAddress',
+                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Close',
+                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
   const HomeScreen({super.key});
 
   @override
@@ -125,7 +217,44 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.contact_mail),
+            label: 'Contact Us',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_on),
+            label: 'Order Now',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            label: 'Google Maps: A-17A, Ganesh Nagar, Mansarovar',
+          ),
+        ],
+        onTap: (int index) {
+          switch (index) {
+            case 0:
+              _showContactUsDialog(context);
+              break;
+            case 1:
+              _showOrderMethodDialog(context);
+              break;
+            case 2:
+              _launchURL("https://www.google.com/maps/place/26%C2%B050'08.0%22N+75%C2%B045'19.9%22E/@26.8354442,75.7554997,20z/data=!4m4!3m3!8m2!3d26.835552!4d75.755533?entry=ttu");
+              break;
+          }
+        },
+        selectedFontSize: 14.0, // Adjust as needed
+        unselectedFontSize: 14.0, // Adjust as needed
+        selectedItemColor: Colors.redAccent, // Example color
+        unselectedItemColor: Colors.black, // Example color
+        type: BottomNavigationBarType.fixed, // Adjust based on your design
+        selectedLabelStyle: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+        unselectedLabelStyle: GoogleFonts.montserrat(),
+      ),
     );
+
   }
 
   Widget buildNavigationCard(BuildContext context, String label, dynamic destination, String subLabel, {bool isUrl = false, bool isFullWidth = false}) {
