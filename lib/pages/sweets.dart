@@ -87,25 +87,19 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               children: <Widget>[
                 TextButton(
                   onPressed: () {
-                    _launchURL('https://www.ubereats.com');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Uber Eats clicked')),
-                    );
+                    _launchURL('https://www.swiggy.com/');
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Uber Eats",
+                  child: Text("Swiggy",
                     style: GoogleFonts.montserrat(),
                   ),
                 ),
                 TextButton(
                   onPressed: () {
-                    _launchURL('https://www.deliveroo.com');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Deliveroo clicked')),
-                    );
+                    _launchURL('https://www.zomato.com/');
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Deliveroo",
+                  child: Text("Zomato",
                     style: GoogleFonts.montserrat(),
                   ),
                 ),
@@ -118,8 +112,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   }
 
   void _showContactUsDialog(BuildContext context) {
-    String phoneNumber = '+91 1234567890'; // Replace with actual random generator
-    String emailAddress = 'contact@gmail.com'; // Replace with actual random generator
+    String phoneNumber = '+91 8707464728'; // Replace with actual random generator
+    String emailAddress = 'cashcons@gmail.com'; // Replace with actual random generator
 
     showDialog(
       context: context,
@@ -165,10 +159,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             child: Column(
               children: <Widget>[
                 ClipRRect(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(15.0), bottom: Radius.circular(15.0)),
                   child: Image.network(
                     imageUrl,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.scaleDown,
                     height: cardHeight - 60, // Adjust the height of the image
                     width: double.infinity,
                   ),
@@ -235,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   style: GoogleFonts.montserrat(
                     textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  child: const Text('Sweet|Type1'),
+                  child: const Text('Ghee Sweets'),
                 ),
               ),
               Tab(
@@ -243,7 +237,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   style: GoogleFonts.montserrat(
                     textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  child: const Text('Sweet|Type2'),
+                  child: const Text('Dry Fruit & Mawa'),
                 ),
               ),
               Tab(
@@ -251,7 +245,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   style: GoogleFonts.montserrat(
                     textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  child: const Text('Sweet|Type3'),
+                  child: const Text('Bengali Sweets'),
                 ),
               ),
             ],
@@ -264,7 +258,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             Row(
               children: [
                 Container(
-                  width: 145,
+                  width: 160,
                   color: Colors.redAccent,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -286,7 +280,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                             });
                           },
                           child: Text(
-                            "Saltines",
+                            "Namkeen",
                             style: GoogleFonts.montserrat(
                               textStyle: TextStyle(fontSize: 16),
                             ),
@@ -328,8 +322,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1A\nShelf Life:'),
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 1B\nShelf Life:'),
+                          buildCard('https://images.slurrp.com/prod/recipe_images/transcribe/sweet/Moong-Dalki-Barfi.webp', 'Moong Barfi\nShelf Life: '),
+                          buildCard('https://www.shutterstock.com/image-photo/moti-pak-mithai-called-boondi-600nw-2142444889.jpg', 'Moti Pak\nShelf Life:'),
+                          buildCard('https://www.shutterstock.com/image-photo/indian-sweet-besan-laddu-full-600nw-1736964029.jpg', 'Besan Ladoo\nShelf Life:'),
+                          buildCard('https://img1.exportersindia.com/product_images/bc-full/dir_192/5731992/kanpuri-laddu-sweet-1529645748-4004998.jpeg', 'Kanpuri Ladoo\nShelf Life:'),
+                          buildCard('https://thumbs.dreamstime.com/b/indian-sweet-kale-boondi-ke-laddoo-made-besan-gram-flour-clarified-butter-sugar-jodhpur-rajasthan-truffles-80097328.jpg', 'Dudh ladoo\nShelf Life:'),
+                          buildCard('https://t3.ftcdn.net/jpg/04/60/79/30/360_F_460793066_kFmSdrFRNraNsLeARfcxuEjiuO3GLo22.jpg', 'Ghewar\nShelf Life:'),
                         ],
                       ),
                     )
@@ -339,7 +337,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             Row(
               children: [
                 Container(
-                  width: 150,
+                  width: 160,
                   color: Colors.redAccent,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -362,7 +360,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                             });
                           },
                           child: Text(
-                            "Saltines",
+                            "Namkeen",
                             style: GoogleFonts.montserrat(
                               textStyle: TextStyle(fontSize: 16),
                             ),
@@ -404,8 +402,11 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2A\nShelf Life:'),
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 2B\nShelf Life:'),
+                          buildCard('https://t4.ftcdn.net/jpg/01/70/39/05/360_F_170390588_KAmillOqlXoct5CsmZBHQM1kFVWEX0Qi.jpg', 'Kaju Katli\nShelf Life:'),
+                          buildCard('https://www.shutterstock.com/image-photo/kaju-pista-roll-cashew-pistachio-600nw-2188790837.jpg', 'Kaju Roll\nShelf Life:'),
+                          buildCard('https://media.istockphoto.com/id/1371885630/photo/milkcake-kalakand-burfi-or-alwar-ka-mawa-barfi-mithai-is-made-of-khoya-mawa-malai-badam-khoa.jpg?s=612x612&w=0&k=20&c=OgDIMtGcvi5CYGQ-3OV0WN9MSpv1cUcQK7R8mRsuDZo=', 'Milk Cake\nShelf Life:'),
+                          buildCard('https://t4.ftcdn.net/jpg/01/67/29/09/360_F_167290919_aIAxnOxrbtcwDkcL1E22itq5SFRA2ZsT.jpg', 'Kalakand\nShelf Life:'),
+                          buildCard('https://media.istockphoto.com/id/521803129/photo/gulab-jamun-11.webp?b=1&s=170667a&w=0&k=20&c=Ir8N51FhWmAN_bQNKiscp0wvPgju9yaqN3Lj9-13NSQ=', 'Gulab Jamun\nShelf Life:'),
                         ],
                       ),
                     )
@@ -415,7 +416,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             Row(
               children: [
                 Container(
-                  width: 150,
+                  width: 160,
                   color: Colors.redAccent,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -438,7 +439,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                             });
                           },
                           child: Text(
-                            "Saltines",
+                            "Namkeen",
                             style: GoogleFonts.montserrat(
                               textStyle: TextStyle(fontSize: 16),
                             ),
@@ -480,8 +481,11 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3A\nShelf Life:'),
-                          buildCard('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Sweet 3B\nShelf Life:'),
+                          buildCard('https://t4.ftcdn.net/jpg/03/64/73/37/360_F_364733792_kGTfRUnoPLIX0PPgO0zFmV2Ao2exg8bH.jpg', 'Rasgulla\nShelf Life:'),
+                          buildCard('https://st3.depositphotos.com/5653638/15692/i/450/depositphotos_156928342-stock-photo-angoori-rasmalai-or-anguri-ras.jpg', 'Rasmalai\nShelf Life:'),
+                          buildCard('https://t3.ftcdn.net/jpg/05/19/11/60/360_F_519116067_n4PKLBrdeC49osFl0ZVul7x5l5DQvAex.jpg', 'Sondesh\nShelf Life:'),
+                          buildCard('https://www.shutterstock.com/image-photo/indian-sweet-food-chena-toast-600nw-2433576209.jpg', 'Chena Toast\nShelf Life:'),
+                          buildCard('https://www.shutterstock.com/image-photo/indian-traditional-sweet-food-long-600nw-1299068719.jpg', 'Cham-Cham\nShelf Life:'),
                         ],
                       ),
                     )
@@ -502,7 +506,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.map),
-              label: 'Google Maps: 123 Blecker Street',
+              label: 'Google Maps: A-17A, Ganesh Nagar, Mansarovar',
             ),
           ],
           onTap: (int index) {
@@ -514,7 +518,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 _showOrderMethodDialog(context);
                 break;
               case 2:
-                _launchURL('https://www.google.com/maps/search/?api=1&query=Shop+Location');
+                _launchURL("https://www.google.com/maps/place/26%C2%B050'08.0%22N+75%C2%B045'19.9%22E/@26.8354442,75.7554997,20z/data=!4m4!3m3!8m2!3d26.835552!4d75.755533?entry=ttu");
                 break;
             }
           },

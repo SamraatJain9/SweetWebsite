@@ -63,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
           // Background image
           Positioned.fill(
             child: Image.asset(
-              'assets/logopen.jpeg', // Replace with your background image path
+              'assets/logo.jpg', // Replace with your background image path
               fit: BoxFit.scaleDown,
             ),
           ),
@@ -110,8 +110,8 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 16), // Add some spacing below the welcome text
             Row(
               children: [
-                Expanded(child: buildNavigationCard(context, 'Deliveroo', 'https://deliveroo.co.uk', 'Order here', isUrl: true)),
-                Expanded(child: buildNavigationCard(context, 'Uber Eats', 'https://ubereats.com', 'Order here', isUrl: true)),
+                Expanded(child: buildNavigationCard(context, 'Swiggy', 'https://www.swiggy.com/', 'Order here', isUrl: true)),
+                Expanded(child: buildNavigationCard(context, 'Zomato', 'https://www.zomato.com/', 'Order here', isUrl: true)),
               ],
             ),
             buildNavigationCard(context, 'Mithai Mandapam', MyHomePage(title: 'Eat Pure, Gift Pure'), 'Click here', isFullWidth: true),

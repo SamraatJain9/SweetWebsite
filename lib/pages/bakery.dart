@@ -87,25 +87,19 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
               children: <Widget>[
                 TextButton(
                   onPressed: () {
-                    _launchURL('https://www.ubereats.com');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Uber Eats clicked')),
-                    );
+                    _launchURL('https://www.swiggy.com/');
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Uber Eats",
+                  child: Text("Swiggy",
                     style: GoogleFonts.montserrat(),
                   ),
                 ),
                 TextButton(
                   onPressed: () {
-                    _launchURL('https://www.deliveroo.com');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Deliveroo clicked')),
-                    );
+                    _launchURL('https://www.zomato.com/');
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Deliveroo",
+                  child: Text("Zomato",
                     style: GoogleFonts.montserrat(),
                   ),
                 ),
@@ -118,8 +112,8 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
   }
 
   void _showContactUsDialog(BuildContext context) {
-    String phoneNumber = '+91 1234567890'; // Replace with actual random generator
-    String emailAddress = 'contact@gmail.com'; // Replace with actual random generator
+    String phoneNumber = '+91 8707464728'; // Replace with actual random generator
+    String emailAddress = 'cashcons@gmail.com'; // Replace with actual random generator
 
     showDialog(
       context: context,
@@ -259,7 +253,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
               children: [
                 // Side panel
                 Container(
-                  width: 145, // Adjust the width as needed
+                  width: 160, // Adjust the width as needed
                   color: Colors.redAccent, // Example background color
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
@@ -307,7 +301,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                             });
                           },
                           child: Text(
-                            "Saltines",
+                            "Namkeen",
                             style: GoogleFonts.montserrat(
                               textStyle: TextStyle(fontSize: 16),
                             ),
@@ -325,8 +319,8 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 1A\nShelf Life:'),
-                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 1B\nShelf Life:'),
+                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Coming Soon...'),
+                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Coming Soon...'),
                         ],
                       ),
                     )
@@ -337,7 +331,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
               children: [
                 // Side panel
                 Container(
-                  width: 150, // Adjust the width as needed
+                  width: 160, // Adjust the width as needed
                   color: Colors.redAccent, // Example background color
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
@@ -385,7 +379,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                             });
                           },
                           child: Text(
-                            "Saltines",
+                            "Namkeen",
                             style: GoogleFonts.montserrat(
                               textStyle: TextStyle(fontSize: 16),
                             ),
@@ -404,8 +398,8 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 2A\nShelf Life:'),
-                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Bakery 2B\nShelf Life:'),
+                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Coming Soon...'),
+                          buildCard('https://plus.unsplash.com/premium_photo-1714669889975-90386fbb03e4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Coming Soon...'),
                         ],
                       ),
                     )
@@ -426,7 +420,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.map),
-              label: 'Google Maps: 123 Blecker Street',
+              label: 'Google Maps: A-17A, Ganesh Nagar, Mansarovar',
             ),
           ],
           onTap: (int index) {
@@ -438,7 +432,7 @@ class _MyBakeryPageState extends State<MyBakeryPage> with SingleTickerProviderSt
                 _showOrderMethodDialog(context);
                 break;
               case 2:
-                _launchURL('https://www.google.com/maps/search/?api=1&query=Shop+Location');
+                _launchURL("https://www.google.com/maps/place/26%C2%B050'08.0%22N+75%C2%B045'19.9%22E/@26.8354442,75.7554997,20z/data=!4m4!3m3!8m2!3d26.835552!4d75.755533?entry=ttu");
                 break;
             }
           },

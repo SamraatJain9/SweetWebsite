@@ -87,25 +87,19 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
               children: <Widget>[
                 TextButton(
                   onPressed: () {
-                    _launchURL('https://www.ubereats.com');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Uber Eats clicked')),
-                    );
+                    _launchURL('https://www.swiggy.com/');
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Uber Eats",
+                  child: Text("Swiggy",
                     style: GoogleFonts.montserrat(),
                   ),
                 ),
                 TextButton(
                   onPressed: () {
-                    _launchURL('https://www.deliveroo.com');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Deliveroo clicked')),
-                    );
+                    _launchURL('https://www.zomato.com/');
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text("Deliveroo",
+                  child: Text("Zomato",
                     style: GoogleFonts.montserrat(),
                   ),
                 ),
@@ -118,8 +112,8 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
   }
 
   void _showContactUsDialog(BuildContext context) {
-    String phoneNumber = '+91 1234567890'; // Replace with actual random generator
-    String emailAddress = 'contact@gmail.com'; // Replace with actual random generator
+    String phoneNumber = '+91 8707464728'; // Replace with actual random generator
+    String emailAddress = 'cashcons@gmail.com'; // Replace with actual random generator
 
     showDialog(
       context: context,
@@ -237,7 +231,7 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
                     style: GoogleFonts.montserrat(
                       textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
-                    child: const Text('Salty|Type1'),
+                    child: const Text('Salty'),
                   ),
                 ),
                 Tab(
@@ -245,7 +239,7 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
                     style: GoogleFonts.montserrat(
                       textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
-                    child: const Text('Salty|Type2'),
+                    child: const Text('Salty'),
                   ),
                 ),
               ]
@@ -258,7 +252,7 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
               children: [
                 // Side panel
                 Container(
-                  width: 145, // Adjust the width as needed
+                  width: 160, // Adjust the width as needed
                   color: Colors.redAccent, // Example background color
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
@@ -325,8 +319,8 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 1A\nShelf Life:'),
-                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 1B\nShelf Life:'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Coming Soon...'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Coming Soon...'),
                         ],
                       ),
                     )
@@ -337,7 +331,7 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
               children: [
                 // Side panel
                 Container(
-                  width: 150, // Adjust the width as needed
+                  width: 160, // Adjust the width as needed
                   color: Colors.redAccent, // Example background color
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the buttons vertically
@@ -404,8 +398,8 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
                       child: ListView(
                         controller: _scrollController,
                         children: [
-                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 2A\nShelf Life:'),
-                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Salty 2B\nShelf Life:'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Coming Soon...'),
+                          buildCard('https://media.istockphoto.com/id/609815010/photo/healthy-homemade-plantain-chips.jpg?s=2048x2048&w=is&k=20&c=N3-E7uvZZ99yPSLFk4zG__KKUf89EaK5SpP_FV1TzyI=', 'Coming Soon...'),
                         ],
                       ),
                     )
@@ -427,7 +421,7 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.map),
-              label: 'Google Maps: 123 Blecker Street',
+              label: 'Google Maps: A-17A, Ganesh Nagar, Mansarovar',
             ),
           ],
           onTap: (int index) {
@@ -439,7 +433,7 @@ class _MySaltyPageState extends State<MySaltyPage> with SingleTickerProviderStat
                 _showOrderMethodDialog(context);
                 break;
               case 2:
-                _launchURL('https://www.google.com/maps/search/?api=1&query=Shop+Location');
+                _launchURL("https://www.google.com/maps/place/26%C2%B050'08.0%22N+75%C2%B045'19.9%22E/@26.8354442,75.7554997,20z/data=!4m4!3m3!8m2!3d26.835552!4d75.755533?entry=ttu");
                 break;
             }
           },

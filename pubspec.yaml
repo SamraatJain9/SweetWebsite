@@ -74,6 +74,9 @@ flutter:
     - assets/lk.gif
     - assets/loading.jpeg
     - assets/logopen.jpeg
+    - assets/logo.jpg
+    - assets/K1.jpg
+    - assets/K2.jpg
 
 
   # The following line ensures that the Material Icons font is
